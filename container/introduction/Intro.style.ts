@@ -1,22 +1,26 @@
 import styled from "styled-components";
 import { responsive } from "@/theme/responsive";
 
-export const HomeStyle = styled.div`
+export const IntroStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 10%;
     .sub-text{
         display: flex;
+        width: 50%;
         flex-direction: column;
-        gap: 15px;
+        gap: 5px;
+        text-align: center;
+        
     }
 
     ${responsive("$small")`
         align-items: normal;
+        text-align:center;
         padding:3%;
         .sub-text{
-            padding:0;
+            width:100%;
+            gap:15px;
 
         }
 

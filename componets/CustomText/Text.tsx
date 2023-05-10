@@ -4,9 +4,9 @@ import { type } from "os";
 import { Primary } from "./Text.style";
 
 const CustomText =forwardRef<HTMLParagraphElement,ITextProps>(
-    ({ variant, type, color, children }) => {
+    ({ variant, type, color, children , weight}) => {
         return type === "primary" ? (
-          <Primary variant={variant} color={color}>
+          <Primary variant={variant} color={color} weight={weight}>
             {children}
           </Primary>
         ) : null

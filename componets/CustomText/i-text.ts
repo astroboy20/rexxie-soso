@@ -17,7 +17,7 @@ export interface ITextProps
          * @example "bold"
          * @example "light"
          */
-        weight?:string
+        weight:string
         
         /**
          * @example "primary"

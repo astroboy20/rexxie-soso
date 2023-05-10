@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { DefaultButton } from './button.styles'
+import { DefaultButton, TransparentButton } from './button.styles'
 import { IButtonProps } from './i-button'
 
 
@@ -10,7 +10,11 @@ const Button = forwardRef<HTMLButtonElement, IButtonProps>(
         <DefaultButton variant={variant} onClick={onClick} ref={ref}>
           {children}
         </DefaultButton>
-      ) : null
+      ) : size === "transparent" ? (
+        <TransparentButton variant={variant} onClick = {onClick} ref={ref}>
+          {children}
+        </TransparentButton>
+      ): null
     }
   );
   

@@ -3,8 +3,17 @@ import { responsive } from "@/theme/responsive";
 
 export const Primary =styled.p<{
     variant:string
+    weight:string
 }>`
-
+    font-weight: ${({ weight }) =>
+      weight === "normal"
+        ? "500"
+        : weight === "normal"
+        ? "600"
+        : weight === "bold"
+        ? "700"
+        : "300"};
+        
     ${({ variant }) =>
       variant === "h1"
         ? css`
