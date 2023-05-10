@@ -8,6 +8,7 @@ export const DefaultButton = styled.button<{variant: string}>`
     font-size: 29px;
     font-weight: 300;
     padding: 14px 140px;
+    cursor: pointer;
     ${responsive("$small")`
         padding:10px 20px;
         font-size:17px;
@@ -22,6 +23,7 @@ export const TransparentButton = styled.button<{variant: string}>`
     font-size: 29px;
     font-weight: 400;
     padding: 14px 140px;
+    cursor:pointer;
     ${responsive("$small")`
         padding:10px 20px;
         font-size:17px;

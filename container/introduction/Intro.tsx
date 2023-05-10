@@ -5,6 +5,7 @@ import { IntroStyle } from "./Intro.style";
 import { GArrow } from "@/asset";
 
 const IntroContainer = () => {
+    
   return (
     <>
       <IntroStyle>
