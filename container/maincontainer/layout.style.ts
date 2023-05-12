@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { responsive } from "@/theme/responsive";
 
-export const IntroStyle = styled.div`
+export const LayoutStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;

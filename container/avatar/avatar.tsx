@@ -1,9 +1,9 @@
-import { Button } from "@/components/Button";
-import { CustomText } from "@/components/CustomText";
 import { GArrow } from "@/asset";
+import { CustomText } from "@/components/CustomText";
+import { Button } from "@/components/Button";
 import { useRouter } from "next/router";
 
-const IntroContainer = () => {
+const AvatarContainer = () => {
   const router = useRouter();
   const handleLink = () => {
     router.push("./avatar");
@@ -16,10 +16,9 @@ const IntroContainer = () => {
         <br />
         SOSO
       </CustomText>
-
       <div className="sub-text">
         <CustomText variant="h3" type="primary" weight="400">
-          Welcome Linda,
+          Choose your chat avatar
         </CustomText>
 
         <CustomText variant="h4" type="primary" weight="400">
@@ -47,4 +46,4 @@ const IntroContainer = () => {
   );
 };
 
-export { IntroContainer };
+export { AvatarContainer };

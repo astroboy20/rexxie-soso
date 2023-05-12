@@ -1,12 +1,14 @@
-import { IntroContainer } from "@/container/introduction"
-
+import { IntroContainer } from "@/container/introduction";
+import Layout from "@/container/maincontainer/layout";
 
 const Intro = () => {
   return (
     <>
-        <IntroContainer/>
+      <Layout>
+        <IntroContainer />
+      </Layout>
     </>
-  )
-}
+  );
+};
 
-export default Intro
+export default Intro;
