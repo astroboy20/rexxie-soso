@@ -1,14 +1,11 @@
-import { Layout } from "@/container/conversation/layout"
+import { RSContainer } from "@/container/conversation/conversation-btwn-rexxie&soso";
 
-const Rexxie_Soso = ()=>{
-    return(
-        <>
-        <Layout>
-            
-        </Layout>
-            
-        </>
-    )
-}
+const Rexxie_Soso = () => {
+  return (
+    <>
+      <RSContainer />
+    </>
+  );
+};
 
-export default Rexxie_Soso
+export default Rexxie_Soso;

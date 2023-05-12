@@ -11,7 +11,8 @@ export interface IButtonProps
         /**
          * Variant of the button
          * @example "primary"
-         * * @example "transparent"
+         * @example "transparent"
+         * @example "small"
          */
         variant:string
 

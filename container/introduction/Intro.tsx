@@ -31,16 +31,7 @@ const IntroContainer = () => {
           Let's chat!
         </CustomText>
         <Button size="transparent" variant="primary" onClick={handleLink}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "5px",
-            }}
-          >
-            Continue <GArrow />
-          </div>
+            Continue{" "} <GArrow />
         </Button>
       </div>
     </>

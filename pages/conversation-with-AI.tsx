@@ -1,14 +1,11 @@
-import { Layout } from "@/container/conversation/layout"
+import { AiContainer } from "@/container/conversation/conversation-with-AI";
 
-const AI = ()=>{
-    return(
-        <>
-        <Layout>
-            
-        </Layout>
-            
-        </>
-    )
-}
+const AI = () => {
+  return (
+    <>
+      <AiContainer />
+    </>
+  );
+};
 
-export default AI
+export default AI;

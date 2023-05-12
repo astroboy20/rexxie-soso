@@ -15,3 +15,20 @@ export const GArrow = ()=>(
 
 
 )
+
+export const Cross = ()=>(
+    
+<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 14V8H0V6H6V0H8V6H14V8H8V14H6Z" fill="black"/>
+</svg>
+
+)
+export const Send = ()=>(
+    
+
+<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M27 1L1 13L13 15.5M27 1L17 27L13 15.5M27 1L13 15.5" stroke="#6B6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+)

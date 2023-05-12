@@ -49,7 +49,7 @@ export const Primary =styled.p<{
             font-size: 16px;
             line-height: 24px;
             ${responsive("$small")`
-            font-size: 16px;`}
+            font-size: 14px;`}
           `
         : css`
             font-size: 1600px;

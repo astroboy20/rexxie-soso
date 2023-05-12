@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 const AvatarContainer = () => {
   const router = useRouter();
   const handleLink = () => {
-    router.push("./avatar");
+    router.push("./conversation-with-AI");
   };
 
   return (
