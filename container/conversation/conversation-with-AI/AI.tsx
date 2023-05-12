@@ -7,6 +7,8 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import { CustomText } from "@/components/CustomText";
 
@@ -22,8 +24,8 @@ const AiContainer = () => {
             </div>
           </Button>
         </Left>
+
         
-            
 
         <Box
           display="flex"

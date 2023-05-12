@@ -2,6 +2,9 @@ import { GArrow } from "@/asset";
 import { CustomText } from "@/components/CustomText";
 import { Button } from "@/components/Button";
 import { useRouter } from "next/router";
+import { Avatars } from "./images";
+import Image from "next/image";
+import { Box, Wrap, WrapItem } from "@chakra-ui/react";
 
 const AvatarContainer = () => {
   const router = useRouter();
@@ -17,18 +20,15 @@ const AvatarContainer = () => {
         SOSO
       </CustomText>
       <div className="sub-text">
-        <CustomText variant="h3" type="primary" weight="400">
-          Choose your chat avatar
-        </CustomText>
-
-        <CustomText variant="h4" type="primary" weight="400">
-          Hey there! Meet our dynamic duo, Soso and Rexxi! Soso is all about
-          helping you prioritize your mental health and wellbeing, while Rexxi
-          is an expert in managing your finances and planning for the future.
-          Together, we make the perfect team for achieving a healthy balance in
-          both your mental and financial life. So, are you ready to get started?
-          Let's chat!
-        </CustomText>
+        <Box>
+          {Avatars.map((avatar, id) => (
+            <Wrap key={id}>
+              <WrapItem>
+                <Image src={avatar.src} height={40} width={40} alt="" />
+              </WrapItem>
+            </Wrap>
+          ))}
+        </Box>
         <Button size="transparent" variant="primary" onClick={handleLink}>
           <div
             style={{
