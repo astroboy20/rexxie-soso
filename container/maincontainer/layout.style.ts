@@ -5,7 +5,8 @@ export const LayoutStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    .sub-text{
+    height: 100%;
+    .sub-text,.avatar{
         display: flex;
         width: 50%;
         flex-direction: column;
@@ -13,6 +14,7 @@ export const LayoutStyle = styled.div`
         text-align: center;
         
     }
+   
 
     ${responsive("$small")`
         align-items: normal;
@@ -22,6 +24,9 @@ export const LayoutStyle = styled.div`
             width:100%;
             gap:15px;
 
+        }
+        .avatar{
+            display:none;
         }
 
     `}

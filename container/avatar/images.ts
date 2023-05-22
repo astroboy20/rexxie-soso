@@ -9,7 +9,7 @@ export const Avatars = [
     },
     {
         id:3,
-        src:"/avatars/Neutral-Profile-Picture-3.png.png"
+        src:"/avatars/Neutral-Profile-Picture-3.png"
     },
     {
         id:4,
@@ -80,367 +80,155 @@ export const Avatars = [
         src:"/avatars/Neutral-Profile-Picture-20.png"
     },
     {
-        id:1,
-        src:""
+        id:21,
+        src:"/avatars/Neutral-Profile-Picture-21.png"
     },
     {
-        id:1,
-        src:""
+        id:22,
+        src:"/avatars/Neutral-Profile-Picture-22.png"
     },
     {
-        id:1,
-        src:""
+        id:23,
+        src:"/avatars/Neutral-Profile-Picture-23.png"
     },
     {
-        id:1,
-        src:""
+        id:24,
+        src:"/avatars/Neutral-Profile-Picture-24.png"
     },
     {
-        id:1,
-        src:""
+        id:25,
+        src:"/avatars/Neutral-Profile-Picture-25.png"
     },
     {
-        id:1,
-        src:""
+        id:26,
+        src:"/avatars/Neutral-Profile-Picture-26.png"
     },
     {
-        id:1,
-        src:""
+        id:27,
+        src:"/avatars/Neutral-Profile-Picture-27.png"
     },
     {
-        id:1,
-        src:""
+        id:28,
+        src:"/avatars/Neutral-Profile-Picture-28.png"
     },
     {
-        id:1,
-        src:""
+        id:29,
+        src:"/avatars/Neutral-Profile-Picture-29.png"
     },
     {
-        id:1,
-        src:""
+        id:30,
+        src:"/avatars/Neutral-Profile-Picture-30.png"
     },
     {
-        id:1,
-        src:""
+        id:31,
+        src:"/avatars/Neutral-Profile-Picture-31.png"
     },
     {
-        id:1,
-        src:""
+        id:32,
+        src:"/avatars/Neutral-Profile-Picture-32.png"
     },
     {
-        id:1,
-        src:""
+        id:33,
+        src:"/avatars/Neutral-Profile-Picture-33.png"
     },
     {
-        id:1,
-        src:""
+        id:34,
+        src:"/avatars/Neutral-Profile-Picture-34.png"
     },
     {
-        id:1,
-        src:""
+        id:35,
+        src:"/avatars/Neutral-Profile-Picture-35.png"
     },
     {
-        id:1,
-        src:""
+        id:36,
+        src:"/avatars/Neutral-Profile-Picture-36.png"
     },
     {
-        id:1,
-        src:""
+        id:37,
+        src:"/avatars/Neutral-Profile-Picture-37.png"
     },
     {
-        id:1,
-        src:""
+        id:38,
+        src:"/avatars/Neutral-Profile-Picture-38.png"
     },
     {
-        id:1,
-        src:""
+        id:39,
+        src:"/avatars/Neutral-Profile-Picture-39.png"
     },
     {
-        id:1,
-        src:""
+        id:40,
+        src:"/avatars/Neutral-Profile-Picture-40.png"
     },
     {
-        id:1,
-        src:""
+        id:41,
+        src:"/avatars/Neutral-Profile-Picture-41.png"
     },
     {
-        id:1,
-        src:""
+        id:42,
+        src:"/avatars/Neutral-Profile-Picture-42.png"
     },
     {
-        id:1,
-        src:""
+        id:43,
+        src:"/avatars/Neutral-Profile-Picture-43.png"
     },
     {
-        id:1,
-        src:""
+        id:44,
+        src:"/avatars/Neutral-Profile-Picture-44.png"
     },
     {
-        id:1,
-        src:""
+        id:45,
+        src:"/avatars/Neutral-Profile-Picture-45.png"
     },
     {
-        id:1,
-        src:""
+        id:46,
+        src:"/avatars/Neutral-Profile-Picture-46.png"
     },
     {
-        id:1,
-        src:""
+        id:47,
+        src:"/avatars/Neutral-Profile-Picture-47.png"
     },
     {
-        id:1,
-        src:""
+        id:48,
+        src:"/avatars/Neutral-Profile-Picture-48.png"
     },
     {
-        id:1,
-        src:""
+        id:49,
+        src:"/avatars/Neutral-Profile-Picture-49.png"
     },
     {
-        id:1,
-        src:""
+        id:50,
+        src:"/avatars/Neutral-Profile-Picture-50.png"
     },
     {
-        id:1,
-        src:""
+        id:51,
+        src:"/avatars/Neutral-Profile-Picture-51.png"
     },
     {
-        id:1,
-        src:""
+        id:52,
+        src:"/avatars/Neutral-Profile-Picture-52.png"
     },
     {
-        id:1,
-        src:""
+        id:53,
+        src:"/avatars/Neutral-Profile-Picture-53.png"
     },
     {
-        id:1,
-        src:""
+        id:54,
+        src:"/avatars/Neutral-Profile-Picture-54.png"
     },
     {
-        id:1,
-        src:""
+        id:55,
+        src:"/avatars/Neutral-Profile-Picture-55.png"
     },
     {
-        id:1,
-        src:""
+        id:56,
+        src:"/avatars/Neutral-Profile-Picture-56.png"
     },
     {
-        id:1,
-        src:""
+        id:57,
+        src:"/avatars/Neutral-Profile-Picture-57.png"
     },
     {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
-    },
-    {
-        id:1,
-        src:""
+        id:58,
+        src:"/avatars/Neutral-Profile-Picture-58.png"
     },
 ]
