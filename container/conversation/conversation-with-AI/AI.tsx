@@ -46,8 +46,7 @@ const AiContainer = () => {
             type="text"
             placeholder="Tell us how you feel"
             width="100%"
-            _focus={{ border: "2px solid red" }}
-            variant="outline"
+            border="none"
             padding="10px"
           />
           <Send />

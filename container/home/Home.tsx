@@ -3,6 +3,7 @@ import { CustomText } from "@/components/CustomText";
 import { Box, Input } from "@chakra-ui/react";
 import { Arrow } from "../../asset";
 import { useRouter } from "next/router";
+import { ButtonStyle, HomeSubText } from "../maincontainer/layout.style";
 
 const HomeContainer = () => {
   const router = useRouter();
@@ -11,12 +12,14 @@ const HomeContainer = () => {
   };
   return (
     <>
-     <div style={{marginTop:"10%"}}></div>
-      <CustomText variant="h1" type="primary" weight="300">
-        Hey REXXI & SOSO HERE
-      </CustomText>
+      
+      <div className="header">
+        <CustomText variant="h1" type="primary" weight="300">
+          Hey REXXI & SOSO HERE
+        </CustomText>
+      </div>
 
-      <div className="sub-text">
+      <HomeSubText>
         <CustomText variant="h3" type="primary" weight="400">
           What’s your name?
         </CustomText>
@@ -25,23 +28,15 @@ const HomeContainer = () => {
           padding="14px"
           placeholder="Tell us your name"
           _placeholder={{ fontSize: "14px", color: "#B7B7B7" }}
+          marginBottom="2.5%"
         />
 
-       <Button size="normal" variant="primary" onClick={handleLink}>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "5px",
-            }}
-          >
+        <Button size="normal" variant="primary" onClick={handleLink}>
+          <ButtonStyle>
             Continue <Arrow />
-          </div>
+          </ButtonStyle>
         </Button>
-      </div>
-   
-      
+      </HomeSubText>
     </>
   );
 };

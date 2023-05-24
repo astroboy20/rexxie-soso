@@ -2,6 +2,8 @@ import { Button } from "@/components/Button";
 import { CustomText } from "@/components/CustomText";
 import { GArrow } from "@/asset";
 import { useRouter } from "next/router";
+import { ButtonStyle, SubText } from "../maincontainer/layout.style";
+import Image from "next/image";
 
 const IntroContainer = () => {
   const router = useRouter();
@@ -11,13 +13,9 @@ const IntroContainer = () => {
 
   return (
     <>
-      <CustomText variant="h1" type="primary" weight="bold">
-        REXXIE
-        <br />
-        SOSO
-      </CustomText>
+      <Image src='/rexxie.png' width={155} height={99} alt=""/>
 
-      <div className="sub-text">
+      <SubText>
         <CustomText variant="h3" type="primary" weight="400">
           Welcome Linda,
         </CustomText>
@@ -31,9 +29,12 @@ const IntroContainer = () => {
           Let's chat!
         </CustomText>
         <Button size="transparent" variant="primary" onClick={handleLink}>
-            Continue{" "} <GArrow />
-        </Button>
-      </div>
+        <ButtonStyle>
+          Continue <GArrow />
+        </ButtonStyle>
+      </Button>
+      </SubText>
+      
     </>
   );
 };
