@@ -2,9 +2,9 @@
   "name": "rexxie-soso",
   "version": "0.1.0",
   "private": true,
-  "type":"module",
+  
   "scripts": {
-    "dev": "ts-node ./websocket/server.js",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

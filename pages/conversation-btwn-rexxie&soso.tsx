@@ -1,5 +1,4 @@
 import { Cross, Send } from "@/asset";
-import { RSContainer } from "@/container/conversation/conversation-btwn-rexxie&soso";
 import {
   ConversationStyle,
   Left,
@@ -62,14 +61,7 @@ const Rexxie_Soso = () => {
   return (
     <>
       <ConversationStyle>
-        <Left>
-          <Button size="small" variant="primary">
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <Cross />
-              {""} START A NEW CHAT
-            </div>
-          </Button>
-        </Left>
+        
 
         <div>
           {messages.map((message, index) => (

@@ -20,6 +20,6 @@
     "outDir": "dist"
 
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "websocket/server.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "websocket/server.js", "websocket/websocket-server.js"],
   "exclude": ["node_modules"]
 }
