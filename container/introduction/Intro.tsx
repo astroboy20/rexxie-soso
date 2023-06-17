@@ -13,7 +13,7 @@ const IntroContainer = () => {
 
   return (
     <>
-      <Image src='/rexxie.png' width={155} height={99} alt=""/>
+      <Image src="/rexxie.png" width={155} height={99} alt="" />
 
       <SubText>
         <CustomText variant="h3" type="primary" weight="400">
@@ -26,15 +26,14 @@ const IntroContainer = () => {
           is an expert in managing your finances and planning for the future.
           Together, we make the perfect team for achieving a healthy balance in
           both your mental and financial life. So, are you ready to get started?
-          Let's chat!
+          Let&lsquo;s chat!
         </CustomText>
         <Button size="transparent" variant="primary" onClick={handleLink}>
-        <ButtonStyle>
-          Continue <GArrow />
-        </ButtonStyle>
-      </Button>
+          <ButtonStyle>
+            Continue <GArrow />
+          </ButtonStyle>
+        </Button>
       </SubText>
-      
     </>
   );
 };
