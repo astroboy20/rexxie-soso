@@ -6,11 +6,11 @@ import {
 import { Input, Box } from "@chakra-ui/react";
 
 import { useState, useRef, useEffect } from "react";
+import WebSocketInstance from "@/websocket";
 
 interface Message {
-  author: string;
-  body: string;
-  variant: string;
+  type: string;
+  message: string;
 }
 
 interface ConnectionMessage {
@@ -27,11 +27,7 @@ const Rexxie_Soso = () => {
     console.log("Connected to WebSocket server");
   };
 
-  webSocket.onmessage = (event) => {
-    const message: Message = JSON.parse(event.data);
-    console.log(message);
-    handleIncomingMessage(message);
-  };
+//   const webSocket = new WebSocket ("wss://rexxie-soso.onrender.com/ws")
 
   const handleIncomingMessage = (body: any) => {
     switch (body) {
@@ -49,18 +45,33 @@ const Rexxie_Soso = () => {
 
   const handleSendMessage = () => {
     if (inputText.trim() !== " ") {
-      const message: Message = {
-        body: inputText,
-        author: "me",
-        variant: "chat",
-      };
-      if (webSocket) {
-        console.log(message);
-        webSocket.send(JSON.stringify(message));
+      const message: Message = { type: "chat", message: inputText };
+      if (webSocket.current) {
+        webSocket.current.send(JSON.stringify(message));
         setInputTeXt("");
       }
     }
   };
+
+  useEffect(() => {
+    webSocket.current = new WebSocket("wss://rexxie-soso.onrender.com/ws");
+
+    webSocket.current.onopen = () => {
+      console.log("Connected to WebSocket server");
+    };
+
+    webSocket.current.onmessage = (event) => {
+      const message: Message = JSON.parse(event.data);
+      handleIncomingMessage(message);
+    };
+
+    return () => {
+      // Clean up WebSocket connection when the component is unmounted
+      if (webSocket.current) {
+        webSocket.current.close();
+      }
+    };
+  }, []);
 
   return (
     <>
