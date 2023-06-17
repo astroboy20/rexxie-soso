@@ -3,7 +3,7 @@ import {
   ConversationStyle,
   Left,
 } from "@/container/conversation/style/conversation.style";
-import { Button, Input, Box } from "@chakra-ui/react";
+import { Input, Box } from "@chakra-ui/react";
 
 import { useState, useRef, useEffect } from "react";
 
@@ -22,6 +22,8 @@ const Rexxie_Soso = () => {
   const [inputText, setInputTeXt] = useState("");
   const webSocket = useRef<WebSocket | null>(null);
 
+//   const webSocket = new WebSocket ("wss://rexxie-soso.onrender.com/ws")
+
   const handleIncomingMessage = (message: any) => {
     switch (message.type) {
       case "connection":
@@ -37,7 +39,7 @@ const Rexxie_Soso = () => {
   };
 
   const handleSendMessage = () => {
-    if (inputText.trim()! == " ") {
+    if (inputText.trim() !== " ") {
       const message: Message = { type: "chat", message: inputText };
       if (webSocket.current) {
         webSocket.current.send(JSON.stringify(message));
@@ -47,28 +49,34 @@ const Rexxie_Soso = () => {
   };
 
   useEffect(() => {
-    webSocket.current = new WebSocket("ws://localhost:8080/websocket");
+    webSocket.current = new WebSocket("wss://rexxie-soso.onrender.com/ws");
 
     webSocket.current.onopen = () => {
-      console.log("connected to websocket server");
+      console.log("Connected to WebSocket server");
     };
 
     webSocket.current.onmessage = (event) => {
       const message: Message = JSON.parse(event.data);
       handleIncomingMessage(message);
     };
+
+    return () => {
+      // Clean up WebSocket connection when the component is unmounted
+      if (webSocket.current) {
+        webSocket.current.close();
+      }
+    };
   }, []);
+
   return (
     <>
       <ConversationStyle>
-        
-
         <div>
           {messages.map((message, index) => (
             <div key={index}>{message}</div>
           ))}
         </div>
-
+jkkjgjg.kbragh;bjkng/
         <Box
           display="flex"
           alignItems="center"

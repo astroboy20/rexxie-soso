@@ -27,7 +27,7 @@ export const Send = ()=>(
     
 
 <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M27 1L1 13L13 15.5M27 1L17 27L13 15.5M27 1L13 15.5" stroke="#6B6B6B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27 1L1 13L13 15.5M27 1L17 27L13 15.5M27 1L13 15.5" stroke="#6B6B6B" strokeWidth="2" stroke-linecap="round" strokeLinejoin="round"/>
 </svg>
 
 
