@@ -76,7 +76,7 @@ const Rexxie_Soso = () => {
             <div key={index}>{message}</div>
           ))}
         </div>
-jkkjgjg.kbragh;bjkng/
+
         <Box
           display="flex"
           alignItems="center"
