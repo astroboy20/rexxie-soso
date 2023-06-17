@@ -8,8 +8,9 @@ import { Input, Box } from "@chakra-ui/react";
 import { useState, useRef, useEffect } from "react";
 
 interface Message {
-  type: string;
-  message: string;
+  author: string;
+  body: string;
+  variant: string;
 }
 
 interface ConnectionMessage {
@@ -17,21 +18,29 @@ interface ConnectionMessage {
   clientId: string;
 }
 
+const webSocket = new WebSocket("wss://rexxie-soso.onrender.com/ws");
 const Rexxie_Soso = () => {
   const [messages, setMessages] = useState<String[]>([]);
   const [inputText, setInputTeXt] = useState("");
-  const webSocket = useRef<WebSocket | null>(null);
 
-//   const webSocket = new WebSocket ("wss://rexxie-soso.onrender.com/ws")
+  webSocket.onopen = () => {
+    console.log("Connected to WebSocket server");
+  };
 
-  const handleIncomingMessage = (message: any) => {
-    switch (message.type) {
+  webSocket.onmessage = (event) => {
+    const message: Message = JSON.parse(event.data);
+    console.log(message);
+    handleIncomingMessage(message);
+  };
+
+  const handleIncomingMessage = (body: any) => {
+    switch (body) {
       case "connection":
-        const connectionMessage: ConnectionMessage = message;
+        const connectionMessage: ConnectionMessage = body;
         console.log(`ClientID: ${connectionMessage.clientId}`);
         break;
       case "chat":
-        setMessages((prevMessages) => [...prevMessages, message.message]);
+        setMessages((prevMessages) => [...prevMessages, body.message]);
         break;
       default:
         break;
@@ -40,40 +49,25 @@ const Rexxie_Soso = () => {
 
   const handleSendMessage = () => {
     if (inputText.trim() !== " ") {
-      const message: Message = { type: "chat", message: inputText };
-      if (webSocket.current) {
-        webSocket.current.send(JSON.stringify(message));
+      const message: Message = {
+        body: inputText,
+        author: "me",
+        variant: "chat",
+      };
+      if (webSocket) {
+        console.log(message);
+        webSocket.send(JSON.stringify(message));
         setInputTeXt("");
       }
     }
   };
 
-  useEffect(() => {
-    webSocket.current = new WebSocket("wss://rexxie-soso.onrender.com/ws");
-
-    webSocket.current.onopen = () => {
-      console.log("Connected to WebSocket server");
-    };
-
-    webSocket.current.onmessage = (event) => {
-      const message: Message = JSON.parse(event.data);
-      handleIncomingMessage(message);
-    };
-
-    return () => {
-      // Clean up WebSocket connection when the component is unmounted
-      if (webSocket.current) {
-        webSocket.current.close();
-      }
-    };
-  }, []);
-
   return (
     <>
       <ConversationStyle>
         <div>
-          {messages.map((message, index) => (
-            <div key={index}>{message}</div>
+          {messages.map((body, index) => (
+            <div key={index}>{body}</div>
           ))}
         </div>
 

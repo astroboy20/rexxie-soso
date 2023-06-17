@@ -4,12 +4,20 @@ import { GArrow } from "@/asset";
 import { useRouter } from "next/router";
 import { ButtonStyle, SubText } from "../maincontainer/layout.style";
 import Image from "next/image";
+import axios from "axios";
+import { useState } from "react";
 
 const IntroContainer = () => {
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const handleLink = () => {
     router.push("./avatar");
   };
+
+  // const recieveData = axios.get("")
+  //   .then((data: any) => 
+  //   setLoading(false)
+  //   ;
 
   return (
     <>
