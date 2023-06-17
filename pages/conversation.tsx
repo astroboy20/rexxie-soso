@@ -6,10 +6,12 @@ import {
 import { Input, Box } from "@chakra-ui/react";
 
 import { useState, useRef, useEffect } from "react";
+import WebSocketInstance from "@/websocket";
 
 interface Message {
   type: string;
   message: string;
+  author: string;
 }
 
 interface ConnectionMessage {
@@ -22,7 +24,7 @@ const Rexxie_Soso = () => {
   const [inputText, setInputTeXt] = useState("");
   const webSocket = useRef<WebSocket | null>(null);
 
-//   const webSocket = new WebSocket ("wss://rexxie-soso.onrender.com/ws")
+  //   const webSocket = new WebSocket ("wss://rexxie-soso.onrender.com/ws")
 
   const handleIncomingMessage = (message: any) => {
     switch (message.type) {
@@ -40,32 +42,32 @@ const Rexxie_Soso = () => {
 
   const handleSendMessage = () => {
     if (inputText.trim() !== " ") {
-      const message: Message = { type: "chat", message: inputText };
-      if (webSocket.current) {
-        webSocket.current.send(JSON.stringify(message));
-        setInputTeXt("");
-      }
+      const message: Message = {
+        type: "chat",
+        message: inputText,
+        author: "me",
+      };
+      // if (webSocket.current) {
+      //   webSocket.current.send(JSON.stringify(message));
+      //   setInputTeXt("");
+      // }
+      WebSocketInstance.socketRef?.send(JSON.stringify(message));
     }
   };
 
   useEffect(() => {
-    webSocket.current = new WebSocket("wss://rexxie-soso.onrender.com/ws");
+    // webSocket.current = new WebSocket("wss://rexxie-soso.onrender.com/ws");
 
-    webSocket.current.onopen = () => {
-      console.log("Connected to WebSocket server");
-    };
+    // webSocket.current.onopen = () => {
+    //   console.log("Connected to WebSocket server");
+    // };
 
-    webSocket.current.onmessage = (event) => {
-      const message: Message = JSON.parse(event.data);
-      handleIncomingMessage(message);
-    };
+    // webSocket.current.onmessage = (event) => {
+    //   const message: Message = JSON.parse(event.data);
+    //   handleIncomingMessage(message);
+    // };
 
-    return () => {
-      // Clean up WebSocket connection when the component is unmounted
-      if (webSocket.current) {
-        webSocket.current.close();
-      }
-    };
+    WebSocketInstance.connect("wss://rexxie-soso.onrender.com/ws");
   }, []);
 
   return (
