@@ -52,6 +52,8 @@ const Rexxie_Soso = () => {
     }
   };
 
+  
+
   useEffect(() => {
     WebSocketInstance.connect("wss://rexxie-soso.onrender.com/ws");
   }, []);

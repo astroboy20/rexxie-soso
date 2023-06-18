@@ -45,7 +45,7 @@ const HomeContainer = () => {
 
       <HomeSubText>
         <CustomText variant="h3" type="primary" weight="400">
-          What’s your name? {randomName}
+          What’s your name? 
         </CustomText>
 
         {isLoading ? (

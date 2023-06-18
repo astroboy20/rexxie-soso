@@ -1,11 +1,12 @@
 interface IWebSocketService {
   socketRef: WebSocket | null;
+  callbacks: Map<any,any> | null
 }
 
 class WebSocketService implements IWebSocketService {
   socketRef: WebSocket | null = null;
   static instance: WebSocketService | null = null;
-  callbacks = {};
+  callbacks:Map<any,any> | null = null;
   static getInstance() {
     if (!WebSocketService.instance) {
       WebSocketService.instance = new WebSocketService();
@@ -30,6 +31,11 @@ class WebSocketService implements IWebSocketService {
       console.log(event.data);
     };
   }
+
+  // addCallbacks( ) {
+  //   this.callbacks = {};
+  //   this.callbacks["new_message"] = newMessageCallbacks;
+  // }
 }
 
 const WebSocketInstance = WebSocketService.getInstance();
