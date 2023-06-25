@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { ButtonStyle, HomeSubText } from "../maincontainer/layout.style";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Circles } from "react-loader-spinner";
 
 const HomeContainer = () => {
   const router = useRouter();
@@ -20,20 +21,21 @@ const HomeContainer = () => {
     setIsLoading(true);
     axios
       .get("https://rexxie-soso.onrender.com/name")
-      .then((response:any) => {
-        setRandomName(response);
-        setIsLoading(false); 
-        console.log(response)
+      .then((response: any) => {
+        console.log(response.data.data);
+        setRandomName(response.data.data);
+        setIsLoading(false);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
-        setIsLoading(false); 
+        setIsLoading(false);
       });
   };
 
   useEffect(() => {
     fetchRandomName();
-  }, []); 
+  }, []);
 
   return (
     <>
@@ -44,18 +46,28 @@ const HomeContainer = () => {
       </div>
 
       <HomeSubText>
-        <CustomText variant="h3" type="primary" weight="400">
-          What’s your name? 
-        </CustomText>
+        {isLoading ? (
+          <CustomText variant="h3" type="primary" weight="400">
+            What’s your name?
+          </CustomText>
+        ) : (
+          <CustomText variant="h3" type="primary" weight="400">
+            Your name is {randomName}
+          </CustomText>
+        )}
 
         {isLoading ? (
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="blue.500"
-              size="xl"
-            />
+          <Box display="flex" justifyContent="center">
+            <Circles
+            height="80"
+            width="80"
+            color="#4fa94d"
+            ariaLabel="circles-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+          </Box>
         ) : (
           <Button size="normal" variant="primary" onClick={handleLink}>
             <ButtonStyle>
