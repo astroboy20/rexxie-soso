@@ -18,14 +18,16 @@ const IntroContainer = () => {
   //   .then((data: any) => 
   //   setLoading(false)
   //   ;
-
+  
+  const userName = localStorage.getItem('item')
+  
   return (
     <>
       <Image src="/rexxie.png" width={155} height={99} alt="" />
 
       <SubText>
         <CustomText variant="h3" type="primary" weight="400">
-          Welcome Linda,
+          Welcome {userName},
         </CustomText>
 
         <CustomText variant="h4" type="primary" weight="400">
@@ -47,3 +49,7 @@ const IntroContainer = () => {
 };
 
 export { IntroContainer };
+  function useEffect(arg0: () => void, arg1: any[]) {
+    throw new Error("Function not implemented.");
+  }
+

@@ -35,7 +35,14 @@ const HomeContainer = () => {
 
   useEffect(() => {
     fetchRandomName();
+    
   }, []);
+
+  useEffect(() => {
+  
+    localStorage.setItem('item', (randomName))
+  }, [randomName]);
+  
 
   return (
     <>

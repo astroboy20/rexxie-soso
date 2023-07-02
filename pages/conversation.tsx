@@ -13,6 +13,7 @@ import { ConnectionMessage, Message } from "@/interfaces";
 const Rexxie_Soso = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputTeXt] = useState("");
+
   const handleIncomingMessage = useCallback((body: Message) => {
     switch (body.variant) {
       case "connection":
@@ -43,10 +44,12 @@ const Rexxie_Soso = () => {
     WebSocketInstance.addCallbacks(handleIncomingMessage);
   }, [handleIncomingMessage]);
 
+  // const selectedImg = localStorage.getItem("selectedAvatar")
   return (
     <>
       <ConversationStyle>
         <div>
+          {/* {selectedImg} */}
           {messages.map((message, index) => (
             <div key={index}>{message.body}</div>
           ))}
