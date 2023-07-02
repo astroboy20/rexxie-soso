@@ -13,6 +13,8 @@ import Image from "next/image";
 const Rexxie_Soso = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
+
+
   const selectedImg = localStorage.getItem("selectedImg");
 
   const handleIncomingMessage = useCallback((body: Message) => {
