@@ -14,8 +14,12 @@ const AvatarContainer = () => {
   const router = useRouter();
 
   const handleLink = () => {
-    router.push("./conversation-with-AI");
+    router.push("./conversation");
   };
+
+  // const handleClick = ()=>{
+  //   localStorage.setItem('image',  JSON.stringify( avatar))
+  // }
 
   // useEffect(() => {
   //   if (!isDesktop) {
@@ -39,7 +43,9 @@ const AvatarContainer = () => {
         <Grid templateColumns={`repeat(9, 1fr)`} gap={2}>
           {Avatars.map((avatar, id) => (
             <Box w="100%" h="auto" key={id}>
-              <Image src={avatar.src} height={40} width={40} alt="" />
+              <Image onClick={()=>{
+                localStorage.setItem("selectedImg", avatar.src)
+              }} src={avatar.src} height={40} width={40} alt="" />
             </Box>
           ))}
         </Grid>

@@ -76,7 +76,7 @@ const HomeContainer = () => {
           />
           </Box>
         ) : (
-          <Button size="normal" variant="primary" onClick={handleLink}>
+          <Button disabled={!randomName} size="normal" variant="primary" onClick={handleLink}>
             <ButtonStyle>
               Continue <Arrow />
             </ButtonStyle>

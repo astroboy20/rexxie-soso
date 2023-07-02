@@ -8,11 +8,12 @@ import { Input, Box } from "@chakra-ui/react";
 import { useState, useRef, useEffect, useCallback } from "react";
 import WebSocketInstance from "@/websocket";
 import { ConnectionMessage, Message } from "@/interfaces";
+import Image from "next/image";
 
-// const webSocket = new WebSocket("wss://rexxie-soso.onrender.com/ws");
 const Rexxie_Soso = () => {
   const [messages, setMessages] = useState<Message[]>([]);
-  const [inputText, setInputTeXt] = useState("");
+  const [inputText, setInputText] = useState("");
+  const selectedImg = localStorage.getItem("selectedImg");
 
   const handleIncomingMessage = useCallback((body: Message) => {
     switch (body.variant) {
@@ -28,14 +29,14 @@ const Rexxie_Soso = () => {
   }, []);
 
   const handleSendMessage = useCallback(() => {
-    if (inputText.trim() !== " ") {
+    if (inputText.trim() !== "") {
       const message: Message = {
         variant: "chat",
         author: "me",
         body: inputText,
       };
       WebSocketInstance.newChatMessage(message);
-      setInputTeXt("");
+      setInputText("");
     }
   }, [inputText]);
 
@@ -44,12 +45,11 @@ const Rexxie_Soso = () => {
     WebSocketInstance.addCallbacks(handleIncomingMessage);
   }, [handleIncomingMessage]);
 
-  // const selectedImg = localStorage.getItem("selectedAvatar")
   return (
     <>
       <ConversationStyle>
         <div>
-          {/* {selectedImg} */}
+          {selectedImg && <Image src={selectedImg} alt="selected-img" width={10} height={10} />}
           {messages.map((message, index) => (
             <div key={index}>{message.body}</div>
           ))}
@@ -77,7 +77,7 @@ const Rexxie_Soso = () => {
             border="none"
             padding="10px"
             value={inputText}
-            onChange={(e) => setInputTeXt(e.target.value)}
+            onChange={(e) => setInputText(e.target.value)}
           />
           <span onClick={handleSendMessage}>
             <Send />
