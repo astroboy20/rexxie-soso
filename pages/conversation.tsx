@@ -49,7 +49,7 @@ const Rexxie_Soso = () => {
     <>
       <ConversationStyle>
         <div>
-          {selectedImg && <Image src={selectedImg} alt="selected-img" width={10} height={10} />}
+          {messages.length > 0 &&  selectedImg && <Image src={selectedImg} alt="selected-img" width={20} height={20} />}
           {messages.map((message, index) => (
             <div key={index}>{message.body}</div>
           ))}
