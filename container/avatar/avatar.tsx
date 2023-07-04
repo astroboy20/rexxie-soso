@@ -38,14 +38,20 @@ const AvatarContainer = () => {
       <CustomText variant="h3" type="primary" weight="normal">
         Choose your chat avatar
       </CustomText>
-      
+
       <Avatar>
         <Grid templateColumns={`repeat(9, 1fr)`} gap={2}>
           {Avatars.map((avatar, id) => (
             <Box w="100%" h="auto" key={id}>
-              <Image onClick={()=>{
-                localStorage.setItem("selectedImg", avatar.src)
-              }} src={avatar.src} height={40} width={40} alt="" />
+              <Image
+                onClick={() => {
+                  localStorage.setItem("selectedImg", avatar.src);
+                }}
+                src={avatar.src}
+                height={40}
+                width={40}
+                alt=""
+              />
             </Box>
           ))}
         </Grid>

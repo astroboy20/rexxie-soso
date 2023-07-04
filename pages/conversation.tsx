@@ -13,9 +13,16 @@ import Image from "next/image";
 const Rexxie_Soso = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
+  const [image,setImage] = useState<string | null>(null)
 
 
-  const selectedImg = localStorage.getItem("selectedImg");
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const selectedImage = localStorage.getItem("selectedImg");
+      setImage(selectedImage);
+    }
+  }, []);
+  
 
   const handleIncomingMessage = useCallback((body: Message) => {
     switch (body.variant) {
@@ -37,6 +44,7 @@ const Rexxie_Soso = () => {
         author: "me",
         body: inputText,
       };
+
       WebSocketInstance.newChatMessage(message);
       setInputText("");
     }
@@ -51,9 +59,17 @@ const Rexxie_Soso = () => {
     <>
       <ConversationStyle>
         <div>
-          {messages.length > 0 &&  selectedImg && <Image src={selectedImg} alt="selected-img" width={20} height={20} />}
           {messages.map((message, index) => (
-            <div key={index}>{message.body}</div>
+            <div key={index}>
+              {" "}
+              <Image
+                src={image ?? ''}
+                alt="selected-img"
+                width={20}
+                height={20}
+              />
+              <div>{message.body}</div>
+            </div>
           ))}
         </div>
 
