@@ -1,11 +1,12 @@
 import { Cross, Send } from "@/asset";
 import {
   ConversationStyle,
-  Left,
+  MessageContainer,
+  MessageWrapper,
 } from "@/container/conversation/style/conversation.style";
 import { Input, Box } from "@chakra-ui/react";
 
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import WebSocketInstance from "@/websocket";
 import { ConnectionMessage, Message } from "@/interfaces";
 import Image from "next/image";
@@ -13,8 +14,7 @@ import Image from "next/image";
 const Rexxie_Soso = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
-  const [image,setImage] = useState<string | null>(null)
-
+  const [image, setImage] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -22,7 +22,6 @@ const Rexxie_Soso = () => {
       setImage(selectedImage);
     }
   }, []);
-  
 
   const handleIncomingMessage = useCallback((body: Message) => {
     switch (body.variant) {
@@ -58,20 +57,19 @@ const Rexxie_Soso = () => {
   return (
     <>
       <ConversationStyle>
-        <div>
-          {messages.map((message, index) => (
-            <div key={index}>
-              {" "}
-              <Image
-                src={image ?? ''}
-                alt="selected-img"
-                width={20}
-                height={20}
-              />
+        {messages.map((message, index) => (
+          <MessageContainer key={index} isOutgoing={message.author === "me"}>
+            <Image
+              src={image ?? ""}
+              alt="selected-img"
+              width={20}
+              height={20}
+            />
+            <MessageWrapper isOutgoing={message.author === "me"}>
               <div>{message.body}</div>
-            </div>
-          ))}
-        </div>
+            </MessageWrapper>
+          </MessageContainer>
+        ))}
 
         <Box
           display="flex"
@@ -85,7 +83,7 @@ const Rexxie_Soso = () => {
           bottom="5%"
           left="0"
           right="0"
-          zIndex="10"
+          zIndex="1"
           margin="2% 4%"
         >
           <Input
