@@ -1,5 +1,5 @@
 export interface Message {
-  author: string;
+  author: string | null;
   body: string;
   variant: "chat" | "connection";
 }

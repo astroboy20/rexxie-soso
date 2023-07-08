@@ -19,7 +19,7 @@ const IntroContainer = () => {
   //   setLoading(false)
   //   ;
   
-  const userName = localStorage.getItem('item')
+  const userName = localStorage.getItem('name')
   
   return (
     <>

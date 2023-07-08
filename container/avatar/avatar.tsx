@@ -1,35 +1,27 @@
-import { GArrow } from "@/asset";
-import { CustomText } from "@/components/CustomText";
-import { Button } from "@/components/Button";
-import { useRouter } from "next/router";
-import { Avatars } from "./images";
-import Image from "next/image";
-import { Box, Center, Grid, useMediaQuery } from "@chakra-ui/react";
-import { useEffect } from "react";
-import { Avatar, ButtonStyle } from "../maincontainer/layout.style";
+import React, { useState } from 'react';
+import { GArrow } from '@/asset';
+import { CustomText } from '@/components/CustomText';
+import { Button } from '@/components/Button';
+import { useRouter } from 'next/router';
+import { Avatars } from './images';
+import Image from 'next/image';
+import { Box, Center, Grid, useMediaQuery } from '@chakra-ui/react';
+import { Avatar, ButtonStyle } from '../maincontainer/layout.style';
 
 const AvatarContainer = () => {
-  const [isDesktop] = useMediaQuery("(min-width: 800px)");
+  const [isDesktop] = useMediaQuery('(min-width: 800px)');
+  const [selectedImg, setSelectedImg] = useState('');
 
   const router = useRouter();
 
   const handleLink = () => {
-    router.push("./conversation");
+    router.push('./conversation');
   };
 
-  // const handleClick = ()=>{
-  //   localStorage.setItem('image',  JSON.stringify( avatar))
-  // }
-
-  // useEffect(() => {
-  //   if (!isDesktop) {
-  //     router.push("./conversation-with-AI");
-  //   }
-  // }, []);
-
-  // if (!isDesktop) {
-  //   return null;
-  // }
+  const handleClick = (avatarSrc:string) => {
+    setSelectedImg(avatarSrc);
+    localStorage.setItem('selectedImg', avatarSrc);
+  };
 
   return (
     <>
@@ -42,17 +34,20 @@ const AvatarContainer = () => {
       <Avatar>
         <Grid templateColumns={`repeat(9, 1fr)`} gap={2}>
           {Avatars.map((avatar, id) => (
-            <Box w="100%" h="auto" key={id}>
+           
               <Image
-                onClick={() => {
-                  localStorage.setItem("selectedImg", avatar.src);
-                }}
+                onClick={() => handleClick(avatar.src)}
                 src={avatar.src}
                 height={40}
                 width={40}
                 alt=""
+                key={avatar.id}
+                style={{
+                  border: `${avatar.src === selectedImg ? '5px solid #0A6634' : 'none'}`,
+                }}
+               
               />
-            </Box>
+            
           ))}
         </Grid>
 

@@ -22,10 +22,9 @@ const HomeContainer = () => {
     axios
       .get("https://rexxie-soso.onrender.com/name")
       .then((response: any) => {
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setRandomName(response.data.data);
         setIsLoading(false);
-        console.log(response);
       })
       .catch((error) => {
         console.log(error);
@@ -40,7 +39,7 @@ const HomeContainer = () => {
 
   useEffect(() => {
   
-    localStorage.setItem('item', (randomName))
+    localStorage.setItem('name', (randomName))
   }, [randomName]);
   
 

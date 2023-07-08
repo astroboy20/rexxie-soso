@@ -15,11 +15,14 @@ const Rexxie_Soso = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputText, setInputText] = useState("");
   const [image, setImage] = useState<string | null>(null);
+  const [name, setName] = useState<string | null>("");
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const selectedImage = localStorage.getItem("selectedImg");
       setImage(selectedImage);
+      const selectedName = localStorage.getItem("name");
+      setName(selectedName);
     }
   }, []);
 
@@ -40,14 +43,14 @@ const Rexxie_Soso = () => {
     if (inputText.trim() !== "") {
       const message: Message = {
         variant: "chat",
-        author: "me",
+        author: name,
         body: inputText,
       };
 
       WebSocketInstance.newChatMessage(message);
       setInputText("");
     }
-  }, [inputText]);
+  }, [inputText, name]);
 
   useEffect(() => {
     WebSocketInstance.connect("wss://rexxie-soso.onrender.com/ws");
@@ -58,15 +61,20 @@ const Rexxie_Soso = () => {
     <>
       <ConversationStyle>
         {messages.map((message, index) => (
-          <MessageContainer key={index} isOutgoing={message.author === "me"}>
+          <MessageContainer key={index} isOutgoing={message.author === name}>
             <Image
               src={image ?? ""}
               alt="selected-img"
               width={20}
               height={20}
             />
-            <MessageWrapper isOutgoing={message.author === "me"}>
-              <div>{message.body}</div>
+            <MessageWrapper isOutgoing={message.author === name}>
+              <div
+                style={{ display: "flex", flexDirection: "column", gap: "5px" }}
+              >
+                <div style={{ fontSize: "10px" }}>{name}</div>
+                {message.body}
+              </div>
             </MessageWrapper>
           </MessageContainer>
         ))}
