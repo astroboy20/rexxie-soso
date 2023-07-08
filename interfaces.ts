@@ -2,6 +2,7 @@ export interface Message {
   author: string | null;
   body: string;
   variant: "chat" | "connection";
+  imageUrl:string | null
 }
 
 export interface ConnectionMessage {

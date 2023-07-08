@@ -19,8 +19,10 @@ const Rexxie_Soso = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      
       const selectedImage = localStorage.getItem("selectedImg");
       setImage(selectedImage);
+
       const selectedName = localStorage.getItem("name");
       setName(selectedName);
     }
@@ -45,12 +47,13 @@ const Rexxie_Soso = () => {
         variant: "chat",
         author: name,
         body: inputText,
+        imageUrl:image
       };
 
       WebSocketInstance.newChatMessage(message);
       setInputText("");
     }
-  }, [inputText, name]);
+  }, [inputText, name, image]);
 
   useEffect(() => {
     WebSocketInstance.connect("wss://rexxie-soso.onrender.com/ws");

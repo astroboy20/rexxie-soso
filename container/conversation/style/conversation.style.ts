@@ -27,7 +27,7 @@ export const MessageWrapper = styled.div<{ isOutgoing: boolean }>`
   display: flex;
   align-items: center;
   margin: 5px;
-  padding: 1% 2%;
+  padding: 8px 2%;
   font-size: 16px;
   background-color: ${({ isOutgoing }) => (isOutgoing ? "#0A6634" : "#E7F2EC")};
   border-radius: 8px;
