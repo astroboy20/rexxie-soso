@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import { HomeContainer } from '@/container/home'
 import Layout from '@/container/maincontainer/layout'
 
+
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {

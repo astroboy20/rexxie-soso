@@ -9,6 +9,14 @@ export const ConversationStyle = styled.div`
   ${responsive("$small")`
        
     `}
+  .message-container {
+    max-height: 70vh;
+    overflow-y: auto;
+   
+  }
+  .message-container::-webkit-scrollbar {
+  display: none;
+}
 `;
 
 export const MessageContainer = styled.div<{ isOutgoing: boolean }>`
@@ -16,9 +24,7 @@ export const MessageContainer = styled.div<{ isOutgoing: boolean }>`
   align-items: center;
   justify-content: ${({ isOutgoing }) =>
     isOutgoing ? "flex-end" : "flex-start"};
-  /* position: fixed; */
   height: 100px;
-  /* overflow-y: scroll; */
   border-radius: 8px;
   margin-bottom: 10px;
 `;

@@ -6,7 +6,7 @@ import {
 } from "@/container/conversation/style/conversation.style";
 import { Input, Box } from "@chakra-ui/react";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import WebSocketInstance from "@/websocket";
 import { ConnectionMessage, Message } from "@/interfaces";
 import Image from "next/image";
@@ -17,9 +17,11 @@ const Rexxie_Soso = () => {
   const [image, setImage] = useState<string | null>(null);
   const [name, setName] = useState<string | null>("");
 
+  const messagesEndRef = useRef<HTMLDivElement | null>(null);
+  const messageContainerRef = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
-      
       const selectedImage = localStorage.getItem("selectedImg");
       setImage(selectedImage);
 
@@ -47,7 +49,7 @@ const Rexxie_Soso = () => {
         variant: "chat",
         author: name,
         body: inputText,
-        imageUrl:image
+        imageUrl: image,
       };
 
       WebSocketInstance.newChatMessage(message);
@@ -60,27 +62,50 @@ const Rexxie_Soso = () => {
     WebSocketInstance.addCallbacks(handleIncomingMessage);
   }, [handleIncomingMessage]);
 
+  const scrollToBottom = () => {
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSendMessage();
+    }
+  };
+
   return (
     <>
       <ConversationStyle>
-        {messages.map((message, index) => (
-          <MessageContainer key={index} isOutgoing={message.author === name}>
-            <Image
-              src={image ?? ""}
-              alt="selected-img"
-              width={20}
-              height={20}
-            />
-            <MessageWrapper isOutgoing={message.author === name}>
-              <div
-                style={{ display: "flex", flexDirection: "column", gap: "5px" }}
-              >
-                <div style={{ fontSize: "10px" }}>{name}</div>
-                {message.body}
-              </div>
-            </MessageWrapper>
-          </MessageContainer>
-        ))}
+        <div className="message-container" ref={messageContainerRef}>
+          {messages.map((message, index) => (
+            <MessageContainer key={index} isOutgoing={message.author === name}>
+              <Image
+                src={image ?? ""}
+                alt="selected-img"
+                width={20}
+                height={20}
+              />
+              <MessageWrapper isOutgoing={message.author === name}>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "5px",
+                  }}
+                >
+                  <div style={{ fontSize: "10px" }}>{message.author}</div>
+                  {message.body}
+                </div>
+              </MessageWrapper>
+            </MessageContainer>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
 
         <Box
           display="flex"
@@ -105,6 +130,7 @@ const Rexxie_Soso = () => {
             padding="10px"
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
+            onKeyDown={handleKeyDown}
           />
           <span onClick={handleSendMessage}>
             <Send />
