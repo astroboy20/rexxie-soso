@@ -10,7 +10,7 @@ export const ConversationStyle = styled.div`
        
     `}
   .message-container {
-    max-height: 70vh;
+    max-height: 80vh;
     overflow-y: auto;
    
   }
@@ -21,11 +21,11 @@ export const ConversationStyle = styled.div`
 
 export const MessageContainer = styled.div<{ isOutgoing: boolean }>`
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: ${({ isOutgoing }) => (isOutgoing ? "flex-end" : "flex-start")};
   border-radius: 8px;
   margin-bottom: 10px;
-  padding: 5px 0; 
+  padding: 10px 0; 
   flex-wrap: wrap; 
 `;
 
@@ -41,5 +41,5 @@ export const MessageWrapper = styled.div<{ isOutgoing: boolean }>`
   color: ${({ isOutgoing }) => (isOutgoing ? "#fff" : "#000")};
   white-space: pre-wrap;
   word-break: break-word;
-  width: 20%; 
+  width: 50%; 
 `;
