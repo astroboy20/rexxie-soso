@@ -2,32 +2,32 @@ import { Button } from "@/components/Button";
 import { CustomText } from "@/components/CustomText";
 import { GArrow } from "@/asset";
 import { useRouter } from "next/router";
-import { ButtonStyle, SubText } from "../maincontainer/layout.style";
+import { AvatarSubText, ButtonStyle, SubText } from "../maincontainer/layout.style";
 import Image from "next/image";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const IntroContainer = () => {
   const [loading, setLoading] = useState(false);
+  const [name,setName] = useState<string | null>("")
   const router = useRouter();
   const handleLink = () => {
     router.push("./avatar");
   };
 
-  // const recieveData = axios.get("")
-  //   .then((data: any) => 
-  //   setLoading(false)
-  //   ;
+  useEffect(()=>{
+    const userName = localStorage.getItem('name')
+    setName(userName)
+  },[])
   
-  const userName = localStorage.getItem('name')
   
   return (
     <>
       <Image src="/rexxie.png" width={155} height={99} alt="" />
 
-      <SubText>
+      <AvatarSubText>
         <CustomText variant="h3" type="primary" weight="400">
-          Welcome {userName},
+          Welcome {name},
         </CustomText>
 
         <CustomText variant="h4" type="primary" weight="400">
@@ -38,18 +38,17 @@ const IntroContainer = () => {
           both your mental and financial life. So, are you ready to get started?
           Let&lsquo;s chat!
         </CustomText>
+        <br />
         <Button size="transparent" variant="primary" onClick={handleLink}>
           <ButtonStyle>
             Continue <GArrow />
           </ButtonStyle>
         </Button>
-      </SubText>
+      </AvatarSubText>
     </>
   );
 };
 
 export { IntroContainer };
-  function useEffect(arg0: () => void, arg1: any[]) {
-    throw new Error("Function not implemented.");
-  }
+  
 

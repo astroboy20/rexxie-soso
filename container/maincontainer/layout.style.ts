@@ -61,3 +61,13 @@ export const IntroSubText = styled(SubText)`
         gap:15px;
     `}
 `
+export const AvatarSubText = styled(SubText)`
+    ${responsive("$small")`
+        width:100%;
+        gap:15px;
+    `}
+    ${responsive("$xsmall")`
+        width:10%;
+        gap:15000000000000000000000000000px;
+    `}
+`

@@ -1,27 +1,31 @@
-import React, { useState } from 'react';
-import { GArrow } from '@/asset';
-import { CustomText } from '@/components/CustomText';
-import { Button } from '@/components/Button';
-import { useRouter } from 'next/router';
-import { Avatars } from './images';
-import Image from 'next/image';
-import { Box, Center, Grid, useMediaQuery } from '@chakra-ui/react';
-import { Avatar, ButtonStyle } from '../maincontainer/layout.style';
+import React, { useState } from "react";
+import { GArrow } from "@/asset";
+import { CustomText } from "@/components/CustomText";
+import { Button } from "@/components/Button";
+import { useRouter } from "next/router";
+import { Avatars } from "./images";
+import Image from "next/image";
+import { Box, Center, Grid, useMediaQuery } from "@chakra-ui/react";
+import { Avatar, ButtonStyle } from "../maincontainer/layout.style";
 
 const AvatarContainer = () => {
-  const [isDesktop] = useMediaQuery('(min-width: 800px)');
-  const [selectedImg, setSelectedImg] = useState('');
+  const [selectedImg, setSelectedImg] = useState("");
+  const [isLargerScreen] = useMediaQuery("(min-width: 768px)");
 
   const router = useRouter();
 
   const handleLink = () => {
-    router.push('./conversation');
+    router.push("./conversation");
   };
 
-  const handleClick = (avatarSrc:string) => {
+  const handleClick = (avatarSrc: string) => {
     setSelectedImg(avatarSrc);
-    localStorage.setItem('selectedImg', avatarSrc);
+    localStorage.setItem("selectedImg", avatarSrc);
   };
+
+  const gridTemplateColumns = isLargerScreen
+    ? "repeat(10, 1fr)"
+    : "repeat(5, 1fr)";
 
   return (
     <>
@@ -32,22 +36,21 @@ const AvatarContainer = () => {
       </CustomText>
 
       <Avatar>
-        <Grid templateColumns={`repeat(9, 1fr)`} gap={2}>
+        <Grid templateColumns={gridTemplateColumns} gap={2}>
           {Avatars.map((avatar, id) => (
-           
-              <Image
-                onClick={() => handleClick(avatar.src)}
-                src={avatar.src}
-                height={40}
-                width={40}
-                alt=""
-                key={avatar.id}
-                style={{
-                  border: `${avatar.src === selectedImg ? '5px solid #0A6634' : 'none'}`,
-                }}
-               
-              />
-            
+            <Image
+              onClick={() => handleClick(avatar.src)}
+              src={avatar.src}
+              height={40}
+              width={40}
+              alt=""
+              key={avatar.id}
+              style={{
+                border: `${
+                  avatar.src === selectedImg ? "5px solid #0A6634" : "none"
+                }`,
+              }}
+            />
           ))}
         </Grid>
 
