@@ -6,17 +6,22 @@ export const ConversationStyle = styled.div`
   flex-direction: column;
   gap: 20px;
   padding: 2% 3%;
-  ${responsive("$small")`
-       
-    `}
+
   .message-container {
-    max-height: 80vh;
+    max-height: 70vh;
     overflow-y: auto;
    
   }
   .message-container::-webkit-scrollbar {
   display: none;
 }
+  ${responsive("$small")`
+      .message-container {
+        max-height: 80vh;
+       
+      }
+    `}
+ 
 `;
 
 export const MessageContainer = styled.div<{ isOutgoing: boolean }>`
