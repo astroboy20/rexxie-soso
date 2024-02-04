@@ -1,10 +1,10 @@
 import { Button } from "@/components/Button";
 import { CustomText } from "@/components/CustomText";
-import { Box, Input, Spinner } from "@chakra-ui/react";
+import { Box, Input, Spinner, Select } from "@chakra-ui/react";
 import { Arrow } from "../../asset";
 import { useRouter } from "next/router";
 import { ButtonStyle, HomeSubText } from "../maincontainer/layout.style";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState, FormEvent } from "react";
 import axios from "axios";
 import { Circles } from "react-loader-spinner";
 
@@ -14,15 +14,11 @@ const HomeContainer = () => {
     router.push("./introduction");
   };
 
-  const [randomName, setRandomName] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-
   const fetchRandomName = () => {
     setIsLoading(true);
     axios
       .get("https://rexxie-soso.onrender.com/name")
       .then((response: any) => {
-        // console.log(response.data.data);
         setRandomName(response.data.data);
         setIsLoading(false);
       })
@@ -34,14 +30,36 @@ const HomeContainer = () => {
 
   useEffect(() => {
     fetchRandomName();
-    
   }, []);
 
+  const [randomName, setRandomName] = useState("");
+  const [userDetails, setUserDetails] = useState({
+    randomName: randomName,
+    name: "",
+    email: "",
+    gender: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const inpuChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+      randomName: randomName,
+    }));
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    typeof window !== "undefined" && localStorage.setItem("userDetails", JSON.stringify(userDetails))
+    console.log(userDetails);
+    router.push("./introduction");
+  };
+
   useEffect(() => {
-  
-    localStorage.setItem('name', (randomName))
+    localStorage.setItem("name", randomName);
   }, [randomName]);
-  
 
   return (
     <>
@@ -53,34 +71,67 @@ const HomeContainer = () => {
 
       <HomeSubText>
         {isLoading ? (
-          <CustomText variant="h3" type="primary" weight="400">
-            What’s your name?
+          <CustomText variant="h2" type="primary" weight="400">
+            What’s your Username?
           </CustomText>
         ) : (
           <CustomText variant="h3" type="primary" weight="400">
-            Your name is {randomName}
+            Your Username is {randomName}
           </CustomText>
         )}
-
-        {isLoading ? (
-          <Box display="flex" justifyContent="center">
-            <Circles
-            height="80"
-            width="80"
-            color="#4fa94d"
-            ariaLabel="circles-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
+        <form onSubmit={onSubmit}>
+          <Input
+            name="name"
+            onChange={inpuChange}
+            value={userDetails.name}
+            padding={"14px 20px"}
+            borderRadius={"4px"}
+            placeholder="Name"
           />
-          </Box>
-        ) : (
-          <Button disabled={!randomName} size="normal" variant="primary" onClick={handleLink}>
-            <ButtonStyle>
-              Continue <Arrow />
-            </ButtonStyle>
-          </Button>
-        )}
+          <Input
+            name="email"
+            onChange={inpuChange}
+            value={userDetails.email}
+            padding={"14px 20px"}
+            borderRadius={"4px"}
+            placeholder="Email"
+          />
+          <Input
+            name="gender"
+            onChange={inpuChange}
+            value={userDetails.gender}
+            padding={"14px 20px"}
+            type="select"
+            borderRadius={"4px"}
+            placeholder="Gender (Male or Female)"
+          />
+
+          {isLoading ? (
+            <Box display="flex" justifyContent="center">
+              <Circles
+                height="80"
+                width="80"
+                color="#4fa94d"
+                ariaLabel="circles-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                visible={true}
+              />
+            </Box>
+          ) : (
+            <Button
+              disabled={!randomName}
+              size="normal"
+              variant="primary"
+              // onClick={handleLink}
+              type="submit"
+            >
+              <ButtonStyle>
+                Continue <Arrow />
+              </ButtonStyle>
+            </Button>
+          )}
+        </form>
       </HomeSubText>
     </>
   );

@@ -17,7 +17,9 @@ const AvatarContainer = () => {
   const handleLink = () => {
     router.push("./conversation");
   };
-
+  const details =
+    typeof window !== "undefined" &&
+    JSON.parse(localStorage.getItem("userDetails") || "{}");
   const handleClick = (avatarSrc: string) => {
     setSelectedImg(avatarSrc);
     localStorage.setItem("selectedImg", avatarSrc);
@@ -32,11 +34,11 @@ const AvatarContainer = () => {
       <Image src="/rexxie.png" width={155} height={99} alt="" />
 
       <CustomText variant="h3" type="primary" weight="normal">
-        Choose your chat avatar
+        Heyy <b>{details?.randomName}</b> this your chat avatar
       </CustomText>
 
       <Avatar>
-        <Grid templateColumns={gridTemplateColumns} gap={2}>
+        {/* <Grid templateColumns={gridTemplateColumns} gap={2}>
           {Avatars.map((avatar, id) => (
             <Image
               onClick={() => handleClick(avatar.src)}
@@ -52,7 +54,27 @@ const AvatarContainer = () => {
               }}
             />
           ))}
-        </Grid>
+        </Grid> */}
+
+        {details.gender === "male" || "Male" ? (
+          <>
+            <Image
+              src={"/avatars/Neutral-Profile-Picture-3.png"}
+              height={300}
+              width={300}
+              alt="image_test"
+            />
+          </>
+        ) : (
+          <>
+            <Image
+              src={"/avatars/Neutral-Profile-Picture-3.png"}
+              height={300}
+              width={300}
+              alt="image_test"
+            />
+          </>
+        )}
 
         <Button size="transparent" variant="primary" onClick={handleLink}>
           <ButtonStyle>

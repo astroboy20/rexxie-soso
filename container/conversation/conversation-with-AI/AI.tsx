@@ -1,6 +1,6 @@
 import { Cross, Send } from "@/asset";
 import { Button } from "@/components/Button";
-import { ConversationStyle, Left } from "../style/conversation.style";
+import { ConversationStyle } from "../style/conversation.style";
 import {
   Box,
   Center,
@@ -16,16 +16,12 @@ const AiContainer = () => {
   return (
     <>
       <ConversationStyle>
-        <Left>
-          <Button size="small" variant="primary">
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <Cross />
-              {""} START A NEW CHAT
-            </div>
-          </Button>
-        </Left>
-
-        
+        <Button size="small" variant="primary">
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <Cross />
+            {""} START A NEW CHAT
+          </div>
+        </Button>
 
         <Box
           display="flex"

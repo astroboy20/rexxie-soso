@@ -7,16 +7,20 @@ export const DefaultButton = styled.button<{ variant: string }>`
   border-radius: 4px;
   font-size: 20px;
   font-weight: 300;
-  padding: 14px 140px;
+  padding: 15px 20px;
+  border: none;
+  outline: none;
   cursor: pointer;
   ${responsive("$small")`
-    padding: 10px 20px;
+    padding: 14px 20px;
     font-size: 17px;
   `}
 
   &:hover {
-    background: #ffffff;
     color: #0a6634;
+    /* color: #0a6634; */
+    background:transparent;
+    border: 2px solid #0a6634;
   }
 
   &:active {

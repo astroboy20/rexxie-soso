@@ -6,7 +6,7 @@ export const LayoutStyle = styled.div`
     flex-direction: column;
     align-items: center;
     height: 100%;
-    margin-top: 5%;
+    margin-top: 3%;
     gap: 10px;
     .header{
         text-align: center;
@@ -32,7 +32,7 @@ export const SubText = styled.div`
     display: flex;
     width: 50%;
     flex-direction: column;
-    gap: 5px;
+    gap: 10px;
     text-align: center;
     ${responsive("$small")`
         width:100%;
@@ -41,7 +41,11 @@ export const SubText = styled.div`
 
 `
 export const Avatar = styled(SubText)`
+   
     ${responsive("$small")`
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
         width:100%;
         gap:15px;
     `}
@@ -50,6 +54,11 @@ export const Avatar = styled(SubText)`
 export const HomeSubText = styled(SubText)`
    text-align: left;
     width:35%;
+    form{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
     ${responsive("$small")`
         width:100%;
         gap:15px;
@@ -67,7 +76,7 @@ export const AvatarSubText = styled(SubText)`
         gap:15px;
     `}
     ${responsive("$xsmall")`
-        width:10%;
-        gap:15000000000000000000000000000px;
+       width:100%;
+       gap:15px;
     `}
 `

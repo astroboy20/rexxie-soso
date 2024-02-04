@@ -58,7 +58,7 @@ const Rexxie_Soso = () => {
   }, [inputText, name, image]);
 
   useEffect(() => {
-    WebSocketInstance.connect("wss://rexxie-soso.onrender.com/ws");
+    WebSocketInstance.connect("wss://rexxie-soso.onrender.com/ws/:channel");
     WebSocketInstance.addCallbacks(handleIncomingMessage);
   }, [handleIncomingMessage]);
 
