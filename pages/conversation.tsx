@@ -21,15 +21,14 @@ const Rexxie_Soso = () => {
   const messageContainerRef = useRef<HTMLDivElement | null>(null);
 
   const dataString =
-  typeof window !== "undefined" && localStorage.getItem("data");
-const data = dataString ? JSON.parse(dataString) : null;
+    typeof window !== "undefined" && localStorage.getItem("data");
+  const data = dataString ? JSON.parse(dataString) : null;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const selectedImage = localStorage.getItem("selectedImg");
       setImage(selectedImage);
 
-     
       setName(data?.randomName);
     }
   }, []);
