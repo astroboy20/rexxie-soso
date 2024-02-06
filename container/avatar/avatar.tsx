@@ -55,26 +55,27 @@ const AvatarContainer = () => {
             />
           ))}
         </Grid> */}
-
-        {details.gender === "male" || "Male" ? (
-          <>
-            <Image
-              src={"/avatars/Neutral-Profile-Picture-3.png"}
-              height={300}
-              width={300}
-              alt="image_test"
-            />
-          </>
-        ) : (
-          <>
-            <Image
-              src={"/avatars/Neutral-Profile-Picture-3.png"}
-              height={300}
-              width={300}
-              alt="image_test"
-            />
-          </>
-        )}
+        <Box textAlign={"center"}>
+          {details.gender === "male" || details.gender === "Male" ? (
+            <>
+              <Image
+                src={"/images/male.jpg"}
+                height={250}
+                width={250}
+                alt="image_test"
+              />
+            </>
+          ) : (
+            <>
+              <Image
+                src={"/images/female.jpg"}
+                height={250}
+                width={250}
+                alt="image_test"
+              />
+            </>
+          )}
+        </Box>
 
         <Button size="transparent" variant="primary" onClick={handleLink}>
           <ButtonStyle>

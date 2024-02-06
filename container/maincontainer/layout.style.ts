@@ -5,8 +5,9 @@ export const LayoutStyle = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     height: 100%;
-    margin-top: 3%;
+    margin-top: 5%;
     gap: 10px;
     .header{
         text-align: center;
@@ -16,6 +17,7 @@ export const LayoutStyle = styled.div`
         text-align:center;
         justify-content:center;
         padding:3%;
+        
         .header{
             text-align:left;
         }
@@ -41,13 +43,10 @@ export const SubText = styled.div`
 
 `
 export const Avatar = styled(SubText)`
-   
+    width: 35%;
     ${responsive("$small")`
-         display: flex;
-         flex-direction: column;
-         justify-content: center;
         width:100%;
-        gap:15px;
+        gap:20px;
     `}
 `
 

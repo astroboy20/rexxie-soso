@@ -14,27 +14,27 @@ const HomeContainer = () => {
     router.push("./introduction");
   };
 
-  const fetchRandomName = () => {
-    setIsLoading(true);
-    axios
-      .get("https://rexxie-soso.onrender.com/name")
-      .then((response: any) => {
-        setRandomName(response.data.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsLoading(false);
-      });
-  };
+  // const fetchRandomName = () => {
+  //   setIsLoading(true);
+  //   axios
+  //     .get("https://rexxie-soso.onrender.com/name")
+  //     .then((response: any) => {
+  //       setRandomName(response.data.data);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setIsLoading(false);
+  //     });
+  // };
 
-  useEffect(() => {
-    fetchRandomName();
-  }, []);
+  // useEffect(() => {
+  //   fetchRandomName();
+  // }, []);
 
-  const [randomName, setRandomName] = useState("");
+  // const [randomName, setRandomName] = useState("");
   const [userDetails, setUserDetails] = useState({
-    randomName: randomName,
+    // randomName: randomName,
     name: "",
     email: "",
     gender: "",
@@ -46,7 +46,7 @@ const HomeContainer = () => {
     setUserDetails((prevDetails) => ({
       ...prevDetails,
       [name]: value,
-      randomName: randomName,
+      // randomName: randomName,
     }));
   };
 
@@ -57,9 +57,9 @@ const HomeContainer = () => {
     router.push("./introduction");
   };
 
-  useEffect(() => {
-    localStorage.setItem("name", randomName);
-  }, [randomName]);
+  // useEffect(() => {
+  //   localStorage.setItem("name", randomName);
+  // }, [randomName]);
 
   return (
     <>
@@ -70,7 +70,7 @@ const HomeContainer = () => {
       </div>
 
       <HomeSubText>
-        {isLoading ? (
+        {/* {isLoading ? (
           <CustomText variant="h2" type="primary" weight="400">
             What’s your Username?
           </CustomText>
@@ -78,7 +78,7 @@ const HomeContainer = () => {
           <CustomText variant="h3" type="primary" weight="400">
             Your Username is {randomName}
           </CustomText>
-        )}
+        )} */}
         <form onSubmit={onSubmit}>
           <Input
             name="name"
@@ -120,7 +120,7 @@ const HomeContainer = () => {
             </Box>
           ) : (
             <Button
-              disabled={!randomName}
+              // disabled={!randomName}
               size="normal"
               variant="primary"
               // onClick={handleLink}
