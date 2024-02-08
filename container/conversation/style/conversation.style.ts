@@ -4,7 +4,7 @@ import { responsive } from "@/theme/responsive";
 export const ConversationStyle = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 10px;
   padding: 2% 3%;
 
   .message-container {
@@ -29,7 +29,7 @@ export const MessageContainer = styled.div<{ isOutgoing: boolean }>`
   align-items: flex-end;
   justify-content: ${({ isOutgoing }) => (isOutgoing ? "flex-end" : "flex-start")};
   border-radius: 8px;
-  margin-bottom: 10px;
+  /* margin-bottom: 5px; */
   padding: 10px 0; 
   flex-wrap: wrap; 
 `;

@@ -2,25 +2,48 @@ import { Button } from "@/components/Button";
 import { CustomText } from "@/components/CustomText";
 import { GArrow } from "@/asset";
 import { useRouter } from "next/router";
-import { AvatarSubText, ButtonStyle, SubText } from "../maincontainer/layout.style";
-import Image from "next/image";
+import {
+  AvatarSubText,
+  ButtonStyle,
+  SubText,
+} from "../maincontainer/layout.style";
 import axios from "axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const IntroContainer = () => {
   const [loading, setLoading] = useState(false);
-  const [name,setName] = useState<string | null>("")
+  const [name, setName] = useState<string | null>("");
   const router = useRouter();
+  const [id, setId] = useState<any>([])
+
+ 
+
+  useEffect(() => {
+    const userName = localStorage.getItem("name");
+    setName(userName);
+  }, []);
+
+  const fetchId = () => {
+    setLoading(true);
+    axios
+      .get("https://rexxie-soso.onrender.com/ws/new")
+      .then((response) => {
+        setLoading(false)
+        setId(response.data.data.PoolId);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  useEffect(() => {
+    fetchId();
+  }, []);
+
   const handleLink = () => {
     router.push("./avatar");
+    typeof window !== "undefined" && localStorage.setItem("id", id)
   };
-
-  useEffect(()=>{
-    const userName = localStorage.getItem('name')
-    setName(userName)
-  },[])
-  
-  
   return (
     <>
       <Image src="/rexxie.png" width={155} height={99} alt="" />
@@ -50,5 +73,3 @@ const IntroContainer = () => {
 };
 
 export { IntroContainer };
-  
-

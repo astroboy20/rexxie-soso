@@ -13,28 +13,28 @@ const HomeContainer = () => {
   const handleLink = () => {
     router.push("./introduction");
   };
+  const [randomName, setRandomName] = useState("");
+  const fetchRandomName = () => {
+    setIsLoading(true);
+    axios
+      .get("https://rexxie-soso.onrender.com/name")
+      .then((response: any) => {
+        setRandomName(response.data.data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoading(false);
+      });
+  };
 
-  // const fetchRandomName = () => {
-  //   setIsLoading(true);
-  //   axios
-  //     .get("https://rexxie-soso.onrender.com/name")
-  //     .then((response: any) => {
-  //       setRandomName(response.data.data);
-  //       setIsLoading(false);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       setIsLoading(false);
-  //     });
-  // };
+  useEffect(() => {
+    fetchRandomName();
+  }, []);
 
-  // useEffect(() => {
-  //   fetchRandomName();
-  // }, []);
-
-  // const [randomName, setRandomName] = useState("");
+  
   const [userDetails, setUserDetails] = useState({
-    // randomName: randomName,
+    randomName: randomName,
     name: "",
     email: "",
     gender: "",
@@ -46,7 +46,7 @@ const HomeContainer = () => {
     setUserDetails((prevDetails) => ({
       ...prevDetails,
       [name]: value,
-      // randomName: randomName,
+      randomName: randomName,
     }));
   };
 
@@ -57,9 +57,9 @@ const HomeContainer = () => {
     router.push("./introduction");
   };
 
-  // useEffect(() => {
-  //   localStorage.setItem("name", randomName);
-  // }, [randomName]);
+  useEffect(() => {
+    localStorage.setItem("name", randomName);
+  }, [randomName]);
 
   return (
     <>
@@ -120,7 +120,7 @@ const HomeContainer = () => {
             </Box>
           ) : (
             <Button
-              // disabled={!randomName}
+              disabled={!randomName}
               size="normal"
               variant="primary"
               // onClick={handleLink}

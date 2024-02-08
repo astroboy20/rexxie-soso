@@ -20,21 +20,23 @@ const AvatarContainer = () => {
   const details =
     typeof window !== "undefined" &&
     JSON.parse(localStorage.getItem("userDetails") || "{}");
+  const name =
+    typeof window !== "undefined" && (localStorage.getItem("name") || "{}");
   const handleClick = (avatarSrc: string) => {
     setSelectedImg(avatarSrc);
     localStorage.setItem("selectedImg", avatarSrc);
   };
 
-  const gridTemplateColumns = isLargerScreen
-    ? "repeat(10, 1fr)"
-    : "repeat(5, 1fr)";
+  // const gridTemplateColumns = isLargerScreen
+  //   ? "repeat(10, 1fr)"
+  //   : "repeat(5, 1fr)";
 
   return (
     <>
       <Image src="/rexxie.png" width={155} height={99} alt="" />
 
       <CustomText variant="h3" type="primary" weight="normal">
-        Heyy <b>{details?.randomName}</b> this your chat avatar
+        Heyy <b>{name}</b> this your chat avatar
       </CustomText>
 
       <Avatar>
