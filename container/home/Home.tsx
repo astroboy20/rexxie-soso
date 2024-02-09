@@ -10,16 +10,36 @@ import { Circles } from "react-loader-spinner";
 
 const HomeContainer = () => {
   const router = useRouter();
-  const handleLink = () => {
-    router.push("./introduction");
+
+  const [userDetails, setUserDetails] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    gender: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setUserDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
   };
-  const [randomName, setRandomName] = useState("");
-  const fetchRandomName = () => {
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     setIsLoading(true);
     axios
-      .get("https://rexxie-soso.onrender.com/name")
+      .post("https://rexxie-soso.onrender.com/name", userDetails,{
+        headers:{
+          "Content-Type":"application/json",
+          Accept:"application/json"
+          
+        }
+      } )
       .then((response: any) => {
-        setRandomName(response.data.data);
+        console.log(response.data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -27,39 +47,6 @@ const HomeContainer = () => {
         setIsLoading(false);
       });
   };
-
-  useEffect(() => {
-    fetchRandomName();
-  }, []);
-
-  
-  const [userDetails, setUserDetails] = useState({
-    randomName: randomName,
-    name: "",
-    email: "",
-    gender: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
-
-  const inpuChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setUserDetails((prevDetails) => ({
-      ...prevDetails,
-      [name]: value,
-      randomName: randomName,
-    }));
-  };
-
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    typeof window !== "undefined" && localStorage.setItem("userDetails", JSON.stringify(userDetails))
-    console.log(userDetails);
-    router.push("./introduction");
-  };
-
-  useEffect(() => {
-    localStorage.setItem("name", randomName);
-  }, [randomName]);
 
   return (
     <>
@@ -70,27 +57,26 @@ const HomeContainer = () => {
       </div>
 
       <HomeSubText>
-        {/* {isLoading ? (
-          <CustomText variant="h2" type="primary" weight="400">
-            What’s your Username?
-          </CustomText>
-        ) : (
-          <CustomText variant="h3" type="primary" weight="400">
-            Your Username is {randomName}
-          </CustomText>
-        )} */}
         <form onSubmit={onSubmit}>
           <Input
-            name="name"
-            onChange={inpuChange}
-            value={userDetails.name}
+            name="firstName"
+            onChange={inputChange}
+            value={userDetails.firstName}
             padding={"14px 20px"}
             borderRadius={"4px"}
-            placeholder="Name"
+            placeholder="First Name"
+          />
+          <Input
+            name="lastName"
+            onChange={inputChange}
+            value={userDetails.lastName}
+            padding={"14px 20px"}
+            borderRadius={"4px"}
+            placeholder="Last Name"
           />
           <Input
             name="email"
-            onChange={inpuChange}
+            onChange={inputChange}
             value={userDetails.email}
             padding={"14px 20px"}
             borderRadius={"4px"}
@@ -98,12 +84,11 @@ const HomeContainer = () => {
           />
           <Input
             name="gender"
-            onChange={inpuChange}
+            onChange={inputChange}
             value={userDetails.gender}
             padding={"14px 20px"}
-            type="select"
             borderRadius={"4px"}
-            placeholder="Gender (Male or Female)"
+            placeholder="Gender (M or F)"
           />
 
           {isLoading ? (
@@ -119,13 +104,7 @@ const HomeContainer = () => {
               />
             </Box>
           ) : (
-            <Button
-              disabled={!randomName}
-              size="normal"
-              variant="primary"
-              // onClick={handleLink}
-              type="submit"
-            >
+            <Button size="normal" variant="primary" type="submit">
               <ButtonStyle>
                 Continue <Arrow />
               </ButtonStyle>
