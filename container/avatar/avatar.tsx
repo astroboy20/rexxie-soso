@@ -20,6 +20,7 @@ const AvatarContainer = () => {
   const dataString =
     typeof window !== "undefined" && localStorage.getItem("data");
   const data = dataString ? JSON.parse(dataString) : null;
+  // console.log(data.gender)
 
   const handleClick = (avatarSrc: string) => {
     setSelectedImg(avatarSrc);
@@ -62,7 +63,7 @@ const AvatarContainer = () => {
           ))}
         </Grid> */}
         <Box textAlign={"center"}>
-          {data?.gender === "M" || data.gender === "m" ? (
+          {data?.gender === "M" || data?.gender === "m" ? (
             <>
               <Image
                 src={"/images/male.jpg"}
