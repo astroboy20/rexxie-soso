@@ -49,13 +49,13 @@ const IntroContainer = () => {
 
       <div className="header">
         <CustomText variant="h1" type="primary" weight="300">
-          VALENTINO 2.0
+        VALENTINA 2.0
         </CustomText>
       </div>
 
       <AvatarSubText>
         <CustomText variant="h3" type="primary" weight="400">
-          Welcome {data?.randomName},
+          Welcome <b> {data?.randomName}</b>,
         </CustomText>
 
         <CustomText variant="h4" type="primary" weight="400">
@@ -67,7 +67,7 @@ const IntroContainer = () => {
           Let&lsquo;s chat! */}
           Would you rather sit on a fence and throw stone at lover's on
           valentine's day or you want to fix yourself with someone who would
-          make Feb. 14 a valentine's day for you ? Curious to know what we are
+          make February 14 a valentine's day for you ? Curious to know what we are
           up against, and what you are up against. Let&lsquo;s Match!
         </CustomText>
         <br />

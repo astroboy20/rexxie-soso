@@ -36,7 +36,7 @@ const AvatarContainer = () => {
       {/* <Image src="/rexxie.png" width={155} height={99} alt="" /> */}
       <div className="header">
         <CustomText variant="h1" type="primary" weight="300">
-          VALENTINO 2.0
+        VALENTINA 2.0
         </CustomText>
       </div>
 

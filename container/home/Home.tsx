@@ -7,7 +7,7 @@ import { ButtonStyle, HomeSubText } from "../maincontainer/layout.style";
 import { ChangeEvent, useEffect, useState, FormEvent } from "react";
 import axios from "axios";
 import { Circles } from "react-loader-spinner";
-import {toast} from "react-toastify"
+import { toast } from "react-toastify";
 
 const HomeContainer = () => {
   const router = useRouter();
@@ -19,9 +19,11 @@ const HomeContainer = () => {
     gender: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [returnedData, setRetunedData] = useState<any>([])
+  const [returnedData, setRetunedData] = useState<any>([]);
 
-  const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const inputChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setUserDetails((prevDetails) => ({
       ...prevDetails,
@@ -33,31 +35,32 @@ const HomeContainer = () => {
     e.preventDefault();
     setIsLoading(true);
     axios
-      .post("https://rexxie-soso.onrender.com/name", userDetails,{
-        headers:{
-          "Content-Type":"application/json",
-          Accept:"application/json"
-          
-        }
-      } )
+      .post("https://rexxie-soso.onrender.com/name", userDetails, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      })
       .then((response: any) => {
         toast.success(response.data.message);
-        setRetunedData(response.data.data)
+        setRetunedData(response.data.data);
         setIsLoading(false);
-        router.push("/introduction")
+        router.push("/introduction");
       })
       .catch((error) => {
         console.log(error);
         setIsLoading(false);
       });
   };
-const data = typeof window !=="undefined" && localStorage.setItem("data", JSON.stringify(returnedData)) 
+  const data =
+    typeof window !== "undefined" &&
+    localStorage.setItem("data", JSON.stringify(returnedData));
 
   return (
     <>
       <div className="header">
         <CustomText variant="h1" type="primary" weight="300">
-          VALENTINO 2.0
+          VALENTINA 2.0
         </CustomText>
       </div>
 
@@ -87,14 +90,23 @@ const data = typeof window !=="undefined" && localStorage.setItem("data", JSON.s
             borderRadius={"4px"}
             placeholder="Email"
           />
-          <Input
+          <Select
             name="gender"
             onChange={inputChange}
             value={userDetails.gender}
             padding={"14px 20px"}
             borderRadius={"4px"}
-            placeholder="Gender (M or F)"
-          />
+            placeholder="Select Gender"
+            bg="white"
+            color="black"
+            border="1px solid #ccc"
+            _hover={{ borderColor: "#aaa" }}
+            _focus={{ borderColor: "blue" }}
+            _active={{ borderColor: "blue" }}
+          >
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </Select>
 
           {isLoading ? (
             <Box display="flex" justifyContent="center">
