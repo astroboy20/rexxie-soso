@@ -1,6 +1,6 @@
 import { Button } from "@/components/Button";
 import { CustomText } from "@/components/CustomText";
-import { GArrow } from "@/asset";
+import { Arrow, GArrow } from "@/asset";
 import { useRouter } from "next/router";
 import {
   AvatarSubText,
@@ -45,7 +45,13 @@ const IntroContainer = () => {
   };
   return (
     <>
-      <Image src="/rexxie.png" width={155} height={99} alt="" />
+      {/* <Image src="/rexxie.png" width={155} height={99} alt="" /> */}
+
+      <div className="header">
+        <CustomText variant="h1" type="primary" weight="300">
+          VALENTINO 2.0
+        </CustomText>
+      </div>
 
       <AvatarSubText>
         <CustomText variant="h3" type="primary" weight="400">
@@ -53,17 +59,21 @@ const IntroContainer = () => {
         </CustomText>
 
         <CustomText variant="h4" type="primary" weight="400">
-          Hey there! Meet our dynamic duo, Soso and Rexxi! Soso is all about
+          {/* Hey there! Meet our dynamic duo, Soso and Rexxi! Soso is all about
           helping you prioritize your mental health and wellbeing, while Rexxi
           is an expert in managing your finances and planning for the future.
           Together, we make the perfect team for achieving a healthy balance in
           both your mental and financial life. So, are you ready to get started?
-          Let&lsquo;s chat!
+          Let&lsquo;s chat! */}
+          Would you rather sit on a fence and throw stone at lover's on
+          valentine's day or you want to fix yourself with someone who would
+          make Feb. 14 a valentine's day for you ? Curious to know what we are
+          up against, and what you are up against. Let&lsquo;s Match!
         </CustomText>
         <br />
-        <Button size="transparent" variant="primary" onClick={handleLink}>
+        <Button size="normal" variant="primary" onClick={handleLink}>
           <ButtonStyle>
-            Continue <GArrow />
+            Continue <Arrow />
           </ButtonStyle>
         </Button>
       </AvatarSubText>

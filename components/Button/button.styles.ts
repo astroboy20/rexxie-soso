@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { responsive } from "@/theme/responsive";
 
 export const DefaultButton = styled.button<{ variant: string }>`
-  background: #0a6634;
+  background: red;
   color: #ffffff;
   border-radius: 4px;
   font-size: 20px;
@@ -17,10 +17,10 @@ export const DefaultButton = styled.button<{ variant: string }>`
   `}
 
   &:hover {
-    color: #0a6634;
+    color: red;
     /* color: #0a6634; */
     background:transparent;
-    border: 2px solid #0a6634;
+    border: 2px solid red;
   }
 
   &:active {
@@ -35,7 +35,7 @@ export const TransparentButton = styled.button<{ variant: string }>`
     justify-content: center;
     text-align: center;
     color: #0A6634;
-    border:1.5px solid #0A6634;
+    border:1.5px solid #ff007f;
     background-color:transparent ;
     border-radius:4px;
     font-size: 20px;

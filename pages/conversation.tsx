@@ -29,8 +29,8 @@ const data = dataString ? JSON.parse(dataString) : null;
       const selectedImage = localStorage.getItem("selectedImg");
       setImage(selectedImage);
 
-      const selectedName = localStorage.getItem("name");
-      setName(selectedName);
+     
+      setName(data?.randomName);
     }
   }, []);
 
@@ -125,7 +125,7 @@ const data = dataString ? JSON.parse(dataString) : null;
           display="flex"
           alignItems="center"
           justifyContent="space-between"
-          border="2px solid #0A6634"
+          border="2px solid red"
           boxShadow="6px 12px 20px rgba(0, 0, 0, 0.14)"
           padding="1%"
           borderRadius="6px"

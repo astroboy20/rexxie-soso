@@ -57,7 +57,7 @@ const data = typeof window !=="undefined" && localStorage.setItem("data", JSON.s
     <>
       <div className="header">
         <CustomText variant="h1" type="primary" weight="300">
-          Hey REXXI & SOSO HERE
+          VALENTINO 2.0
         </CustomText>
       </div>
 
@@ -101,7 +101,7 @@ const data = typeof window !=="undefined" && localStorage.setItem("data", JSON.s
               <Circles
                 height="80"
                 width="80"
-                color="#4fa94d"
+                color="red"
                 ariaLabel="circles-loading"
                 wrapperStyle={{}}
                 wrapperClass=""

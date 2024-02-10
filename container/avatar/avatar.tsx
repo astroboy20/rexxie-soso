@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { GArrow } from "@/asset";
+import { Arrow, GArrow } from "@/asset";
 import { CustomText } from "@/components/CustomText";
 import { Button } from "@/components/Button";
 import { useRouter } from "next/router";
@@ -32,7 +32,12 @@ const AvatarContainer = () => {
 
   return (
     <>
-      <Image src="/rexxie.png" width={155} height={99} alt="" />
+      {/* <Image src="/rexxie.png" width={155} height={99} alt="" /> */}
+      <div className="header">
+        <CustomText variant="h1" type="primary" weight="300">
+          VALENTINO 2.0
+        </CustomText>
+      </div>
 
       <CustomText variant="h3" type="primary" weight="normal">
         Heyy <b>{data?.randomName}</b> this your chat avatar
@@ -78,9 +83,9 @@ const AvatarContainer = () => {
           )}
         </Box>
 
-        <Button size="transparent" variant="primary" onClick={handleLink}>
+        <Button size="normal" variant="primary" onClick={handleLink}>
           <ButtonStyle>
-            Continue <GArrow />
+            Continue <Arrow />
           </ButtonStyle>
         </Button>
       </Avatar>
