@@ -15,34 +15,33 @@ const IntroContainer = () => {
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState<string | null>("");
   const router = useRouter();
-  const [id, setId] = useState<any>([])
+  // const [id, setId] = useState<any>([]);
 
- 
+  const dataString =
+    typeof window !== "undefined" && localStorage.getItem("data");
+  const data = dataString ? JSON.parse(dataString) : null;
 
-  useEffect(() => {
-    const userName = localStorage.getItem("name");
-    setName(userName);
-  }, []);
+  console.log(data?.randomName);
 
-  const fetchId = () => {
-    setLoading(true);
-    axios
-      .get("https://rexxie-soso.onrender.com/ws/new")
-      .then((response) => {
-        setLoading(false)
-        setId(response.data.data.PoolId);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  useEffect(() => {
-    fetchId();
-  }, []);
+  // const fetchId = () => {
+  //   setLoading(true);
+  //   axios
+  //     .get("https://rexxie-soso.onrender.com/ws/new")
+  //     .then((response) => {
+  //       setLoading(false);
+  //       setId(response.data.data.PoolId);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+  // useEffect(() => {
+  //   fetchId();
+  // }, []);
 
   const handleLink = () => {
     router.push("./avatar");
-    typeof window !== "undefined" && localStorage.setItem("id", id)
+    // typeof window !== "undefined" && localStorage.setItem("id", id);
   };
   return (
     <>
@@ -50,7 +49,7 @@ const IntroContainer = () => {
 
       <AvatarSubText>
         <CustomText variant="h3" type="primary" weight="400">
-          Welcome {name},
+          Welcome {data?.randomName},
         </CustomText>
 
         <CustomText variant="h4" type="primary" weight="400">

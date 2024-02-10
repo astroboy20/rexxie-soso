@@ -17,11 +17,10 @@ const AvatarContainer = () => {
   const handleLink = () => {
     router.push("./conversation");
   };
-  const details =
-    typeof window !== "undefined" &&
-    JSON.parse(localStorage.getItem("userDetails") || "{}");
-  const name =
-    typeof window !== "undefined" && (localStorage.getItem("name") || "{}");
+  const dataString =
+    typeof window !== "undefined" && localStorage.getItem("data");
+  const data = dataString ? JSON.parse(dataString) : null;
+
   const handleClick = (avatarSrc: string) => {
     setSelectedImg(avatarSrc);
     localStorage.setItem("selectedImg", avatarSrc);
@@ -36,7 +35,7 @@ const AvatarContainer = () => {
       <Image src="/rexxie.png" width={155} height={99} alt="" />
 
       <CustomText variant="h3" type="primary" weight="normal">
-        Heyy <b>{name}</b> this your chat avatar
+        Heyy <b>{data?.randomName}</b> this your chat avatar
       </CustomText>
 
       <Avatar>
@@ -58,7 +57,7 @@ const AvatarContainer = () => {
           ))}
         </Grid> */}
         <Box textAlign={"center"}>
-          {details.gender === "male" || details.gender === "Male" ? (
+          {data.gender === "M" || data.gender === "m" ? (
             <>
               <Image
                 src={"/images/male.jpg"}

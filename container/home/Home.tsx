@@ -7,6 +7,7 @@ import { ButtonStyle, HomeSubText } from "../maincontainer/layout.style";
 import { ChangeEvent, useEffect, useState, FormEvent } from "react";
 import axios from "axios";
 import { Circles } from "react-loader-spinner";
+import {toast} from "react-toastify"
 
 const HomeContainer = () => {
   const router = useRouter();
@@ -18,6 +19,7 @@ const HomeContainer = () => {
     gender: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [returnedData, setRetunedData] = useState<any>([])
 
   const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -39,14 +41,17 @@ const HomeContainer = () => {
         }
       } )
       .then((response: any) => {
-        console.log(response.data);
+        toast.success(response.data.message);
+        setRetunedData(response.data.data)
         setIsLoading(false);
+        router.push("/introduction")
       })
       .catch((error) => {
         console.log(error);
         setIsLoading(false);
       });
   };
+const data = typeof window !=="undefined" && localStorage.setItem("data", JSON.stringify(returnedData)) 
 
   return (
     <>

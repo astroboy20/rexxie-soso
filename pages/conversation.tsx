@@ -20,10 +20,9 @@ const Rexxie_Soso = () => {
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const messageContainerRef = useRef<HTMLDivElement | null>(null);
 
-  const id = typeof window !== "undefined" && localStorage.getItem("id");
-  const details =
-    typeof window !== "undefined" &&
-    JSON.parse(localStorage.getItem("userDetails") || "{}");
+  const dataString =
+  typeof window !== "undefined" && localStorage.getItem("data");
+const data = dataString ? JSON.parse(dataString) : null;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -63,7 +62,7 @@ const Rexxie_Soso = () => {
   }, [inputText, name, image]);
 
   useEffect(() => {
-    WebSocketInstance.connect(`wss://rexxie-soso.onrender.com/ws/${id}`);
+    WebSocketInstance.connect(`wss://rexxie-soso.onrender.com/ws/room`);
     WebSocketInstance.addCallbacks(handleIncomingMessage);
   }, [handleIncomingMessage]);
 
@@ -89,7 +88,7 @@ const Rexxie_Soso = () => {
         <div className="message-container" ref={messageContainerRef}>
           {messages.map((message, index) => (
             <MessageContainer key={index} isOutgoing={message.author === name}>
-              {details?.gender === "Male" || "male" ? (
+              {data?.gender === "M" || "m" ? (
                 <Image
                   src={"/images/male.jpg"}
                   alt="selected-img"
