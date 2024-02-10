@@ -62,7 +62,7 @@ const AvatarContainer = () => {
           ))}
         </Grid> */}
         <Box textAlign={"center"}>
-          {data.gender === "M" || data.gender === "m" ? (
+          {data?.gender === "M" || data.gender === "m" ? (
             <>
               <Image
                 src={"/images/male.jpg"}
