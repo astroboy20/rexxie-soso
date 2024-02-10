@@ -63,6 +63,7 @@ const HomeContainer = () => {
           router.push("/introduction");
         }
         setIsLoading(false);
+        router.push("/introduction");
       })
       .catch((error) => {
         toast.error(error);
