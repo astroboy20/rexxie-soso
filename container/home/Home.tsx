@@ -150,7 +150,7 @@ const HomeContainer = () => {
           ) : (
             <Button size="normal" variant="primary" type="submit">
               <ButtonStyle>
-                Continue <Arrow />
+                Get me a VAL <Arrow />
               </ButtonStyle>
             </Button>
           )}
