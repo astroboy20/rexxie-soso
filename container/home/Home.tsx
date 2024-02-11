@@ -17,6 +17,7 @@ const HomeContainer = () => {
     lastName: "",
     email: "",
     gender: "",
+    phoneNumber: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [returnedData, setRetunedData] = useState<any>([]);
@@ -107,6 +108,14 @@ const HomeContainer = () => {
             padding={"14px 20px"}
             borderRadius={"4px"}
             placeholder="Email"
+          />
+          <Input
+            name="phoneNumber"
+            onChange={inputChange}
+            value={userDetails.phoneNumber}
+            padding={"14px 20px"}
+            borderRadius={"4px"}
+            placeholder="Phone Number"
           />
           <Select
             name="gender"
