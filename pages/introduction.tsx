@@ -1,5 +1,6 @@
 import { IntroContainer } from "@/container/introduction";
 import Layout from "@/container/maincontainer/layout";
+import { Vendors } from "@/container/vendors";
 import Head from "next/head";
 
 const Intro = () => {
@@ -13,6 +14,7 @@ const Intro = () => {
       </Head>
       <Layout>
         <IntroContainer />
+        <Vendors />
       </Layout>
     </>
   );

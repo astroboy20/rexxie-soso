@@ -96,6 +96,7 @@ const HomeContainer = () => {
             padding={"14px 20px"}
             borderRadius={"4px"}
             placeholder="First Name"
+            required
           />
           <Input
             name="lastName"
@@ -104,6 +105,7 @@ const HomeContainer = () => {
             padding={"14px 20px"}
             borderRadius={"4px"}
             placeholder="Last Name"
+            required
           />
           <Input
             name="email"
@@ -112,6 +114,7 @@ const HomeContainer = () => {
             padding={"14px 20px"}
             borderRadius={"4px"}
             placeholder="Email"
+            required
           />
           <Input
             name="phoneNumber"
@@ -120,6 +123,7 @@ const HomeContainer = () => {
             padding={"14px 20px"}
             borderRadius={"4px"}
             placeholder="Phone Number"
+            required
           />
           <Select
             name="gender"
@@ -134,6 +138,7 @@ const HomeContainer = () => {
             _hover={{ borderColor: "#aaa" }}
             _focus={{ borderColor: "blue" }}
             _active={{ borderColor: "blue" }}
+            required
           >
             <option value="M">Male</option>
             <option value="F">Female</option>
