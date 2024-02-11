@@ -33,6 +33,18 @@ const HomeContainer = () => {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Check if any field is empty
+    if (
+      !userDetails.firstName ||
+      !userDetails.lastName ||
+      !userDetails.email ||
+      !userDetails.gender
+    ) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+
     setIsLoading(true);
     axios
       .post("https://rexxie-soso.onrender.com/name", userDetails, {
@@ -42,13 +54,18 @@ const HomeContainer = () => {
         },
       })
       .then((response: any) => {
-        toast.success(response.data.message);
-        setRetunedData(response.data.data);
+        if (response.data.message === "Looks Like you Registered Previously!") {
+          toast.error(response.data.message);
+          setRetunedData(response.data.data);
+        } else {
+          toast.success(response.data.message);
+          setRetunedData(response.data.data);
+          router.push("/introduction");
+        }
         setIsLoading(false);
-        router.push("/introduction");
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error);
         setIsLoading(false);
       });
   };
