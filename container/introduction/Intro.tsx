@@ -49,8 +49,8 @@ const IntroContainer = () => {
 
       <div className="header">
         <Image
-          src={"/images/Valentina.png"}
-          height={400}
+          src={"/images/Valentina.jpg"}
+          height={100}
           width={400}
           alt="image_test"
         />
