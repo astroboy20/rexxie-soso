@@ -8,6 +8,7 @@ import { ChangeEvent, useEffect, useState, FormEvent } from "react";
 import axios from "axios";
 import { Circles } from "react-loader-spinner";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 const HomeContainer = () => {
   const router = useRouter();
@@ -78,9 +79,12 @@ const HomeContainer = () => {
   return (
     <>
       <div className="header">
-        <CustomText variant="h1" type="primary" weight="300">
-          VALENTINA 2.0
-        </CustomText>
+        <Image
+          src={"/images/Valentina.png"}
+          height={400}
+          width={400}
+          alt="image_test"
+        />
       </div>
 
       <HomeSubText>

@@ -48,9 +48,12 @@ const IntroContainer = () => {
       {/* <Image src="/rexxie.png" width={155} height={99} alt="" /> */}
 
       <div className="header">
-        <CustomText variant="h1" type="primary" weight="300">
-          VALENTINA 2.0
-        </CustomText>
+        <Image
+          src={"/images/Valentina.png"}
+          height={400}
+          width={400}
+          alt="image_test"
+        />
       </div>
 
       <AvatarSubText>
@@ -65,15 +68,16 @@ const IntroContainer = () => {
           Together, we make the perfect team for achieving a healthy balance in
           both your mental and financial life. So, are you ready to get started?
           Let&lsquo;s chat! */}
-          Would you rather sit on a fence and throw stone at lover's on
-          valentine's day or you want to fix yourself with someone who would
-          make February 14 a valentine's day for you ? Curious to know what we
-          are up against, and what you are up against. Let&lsquo;s Match!
+          Would you rather sit on a fence and throw stone at lover&lsquo;s on
+          valentine&lsquo;s day or you want to fix yourself with someone who
+          would make February 14 a valentine&lsquo;s day for you ? Curious to
+          know what we are up against, and what you are up against. Let&lsquo;
+          Match!
         </CustomText>
         <br />
         <Button size="normal" variant="primary" onClick={handleLink}>
           <ButtonStyle>
-            Continue <Arrow />
+            Continue to Anonymous Chat <Arrow />
           </ButtonStyle>
         </Button>
       </AvatarSubText>
