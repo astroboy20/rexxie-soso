@@ -10,6 +10,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import WebSocketInstance from "@/websocket";
 import { ConnectionMessage, Message } from "@/interfaces";
 import Image from "next/image";
+import Head from "next/head";
 
 const Rexxie_Soso = () => {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -21,15 +22,14 @@ const Rexxie_Soso = () => {
   const messageContainerRef = useRef<HTMLDivElement | null>(null);
 
   const dataString =
-  typeof window !== "undefined" && localStorage.getItem("data");
-const data = dataString ? JSON.parse(dataString) : null;
+    typeof window !== "undefined" && localStorage.getItem("data");
+  const data = dataString ? JSON.parse(dataString) : null;
 
   useEffect(() => {
     if (typeof window !== "undefined") {
       const selectedImage = localStorage.getItem("selectedImg");
       setImage(selectedImage);
 
-     
       setName(data?.randomName);
     }
   }, []);
@@ -84,6 +84,12 @@ const data = dataString ? JSON.parse(dataString) : null;
 
   return (
     <>
+      <Head>
+        <title>Valentina 2.0</title>
+        <meta name="description" content="GET A VAL!" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/images/valentina-small.png" />
+      </Head>
       <ConversationStyle>
         <div className="message-container" ref={messageContainerRef}>
           {messages.map((message, index) => (

@@ -8,6 +8,7 @@ import { ChangeEvent, useEffect, useState, FormEvent } from "react";
 import axios from "axios";
 import { Circles } from "react-loader-spinner";
 import { toast } from "react-toastify";
+import Image from "next/image";
 
 const HomeContainer = () => {
   const router = useRouter();
@@ -17,6 +18,7 @@ const HomeContainer = () => {
     lastName: "",
     email: "",
     gender: "",
+    phoneNumber: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [returnedData, setRetunedData] = useState<any>([]);
@@ -63,6 +65,7 @@ const HomeContainer = () => {
           router.push("/introduction");
         }
         setIsLoading(false);
+        router.push("/introduction");
       })
       .catch((error) => {
         toast.error(error);
@@ -76,9 +79,12 @@ const HomeContainer = () => {
   return (
     <>
       <div className="header">
-        <CustomText variant="h1" type="primary" weight="300">
-          VALENTINA 2.0
-        </CustomText>
+        <Image
+          src={"/images/Valentina.jpg"}
+          height={100}
+          width={400}
+          alt="image_test"
+        />
       </div>
 
       <HomeSubText>
@@ -90,6 +96,7 @@ const HomeContainer = () => {
             padding={"14px 20px"}
             borderRadius={"4px"}
             placeholder="First Name"
+            required
           />
           <Input
             name="lastName"
@@ -98,6 +105,7 @@ const HomeContainer = () => {
             padding={"14px 20px"}
             borderRadius={"4px"}
             placeholder="Last Name"
+            required
           />
           <Input
             name="email"
@@ -106,6 +114,16 @@ const HomeContainer = () => {
             padding={"14px 20px"}
             borderRadius={"4px"}
             placeholder="Email"
+            required
+          />
+          <Input
+            name="phoneNumber"
+            onChange={inputChange}
+            value={userDetails.phoneNumber}
+            padding={"14px 20px"}
+            borderRadius={"4px"}
+            placeholder="Phone Number"
+            required
           />
           <Select
             name="gender"
@@ -120,6 +138,7 @@ const HomeContainer = () => {
             _hover={{ borderColor: "#aaa" }}
             _focus={{ borderColor: "blue" }}
             _active={{ borderColor: "blue" }}
+            required
           >
             <option value="M">Male</option>
             <option value="F">Female</option>
@@ -140,7 +159,7 @@ const HomeContainer = () => {
           ) : (
             <Button size="normal" variant="primary" type="submit">
               <ButtonStyle>
-                Continue <Arrow />
+                Get me a VAL <Arrow />
               </ButtonStyle>
             </Button>
           )}

@@ -35,9 +35,12 @@ const AvatarContainer = () => {
     <>
       {/* <Image src="/rexxie.png" width={155} height={99} alt="" /> */}
       <div className="header">
-        <CustomText variant="h1" type="primary" weight="300">
-        VALENTINA 2.0
-        </CustomText>
+        <Image
+          src={"/images/Valentina.jpg"}
+          height={100}
+          width={400}
+          alt="image_test"
+        />
       </div>
 
       <CustomText variant="h3" type="primary" weight="normal">
@@ -64,23 +67,19 @@ const AvatarContainer = () => {
         </Grid> */}
         <Box textAlign={"center"}>
           {data?.gender === "M" || data?.gender === "m" ? (
-            <>
-              <Image
-                src={"/images/male.jpg"}
-                height={250}
-                width={250}
-                alt="image_test"
-              />
-            </>
+            <Image
+              src={"/images/male.jpg"}
+              height={250}
+              width={250}
+              alt="image_test"
+            />
           ) : (
-            <>
-              <Image
-                src={"/images/female.jpg"}
-                height={250}
-                width={250}
-                alt="image_test"
-              />
-            </>
+            <Image
+              src={"/images/female.jpg"}
+              height={250}
+              width={250}
+              alt="image_test"
+            />
           )}
         </Box>
 
